@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Dynamic Home</title>
-<body>
-    <%- include('partials/header') %>
-    <h1>Variable: <%= myvar %> </h1>
-    <%- include('partials/card') %>
+    <!-- <link href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet"> -->
+    <!-- <link href="node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf" rel="stylesheet"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
-    <!-- Including bootstrap elements later -->
-    <%- include('partials/footer') %>
-</body>
+    <title>Dynamic Home</title>
+    <body class="mx-0">
+        <%- include('partials/header') %>
+        <h1>Variable: <%= myvar %> </h1>
+        <%- include('partials/card') %>
+
+        <!-- Include live -->
+        <!-- Include featured -->
+        <!-- Include  -->
+
+        <%- include('partials/footer') %>
+    </body>
 </html>

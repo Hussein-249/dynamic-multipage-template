@@ -1,12 +1,14 @@
 /*
-Very basic Express server.
+Original Author (OA): Hussein-249
+
+Description: A very basic Express server.
 
 Server listens on port 3001 unless specified in environment variables.
 */
-const http = require('http');
-const express = require('express');
 
-// import mime from 'mime'; // to correctly set MIME types
+// requirements in alphabetical order
+const express = require('express');
+const http = require('http');
 const path = require('path');
 const redis = require('redis'); // for a shared cache when re-using content, implement later
 
@@ -38,11 +40,23 @@ app.use((err, req, res, next) => {
     });
 });
 
+// The bootstrap and fortawesome code below can be removed if your solution uses a CDN to deliver the necessary files.
+// However, installing the necessary packes in the local directory will be better for customization.
+
+// OA unsure if this is the optimal solution to MIME type mismatch
 // there may be a source map warning associated with this
 app.get('/node_modules/bootstrap/dist/css/bootstrap.min.css', (req, res) => {
     const bootstrapPath = path.join(__dirname, '/node_modules/bootstrap/dist/css/bootstrap.min.css');
     res.setHeader('Content-Type', 'text/css'); // manually ensuring that bootstrap.min.css is recognized properly
     res.sendFile(bootstrapPath);
+});
+
+// OA unsure if this is the optimal solution to MIME type mismatch
+// Also redundant if using a CDN
+app.get('/node_modules/@fortawesome/fontawesome-free/css/all.min.css', (req, res) => {
+    const faPath = path.join(__dirname, '/node_modules/@fortawesome/fontawesome-free/css/all.min.css');
+    res.setHeader('Content-Type', 'text/css'); // manually ensuring that fontawesome is recognized properly
+    res.sendFile(faPath);
 });
 
 app.get('/', (req, res) => {
