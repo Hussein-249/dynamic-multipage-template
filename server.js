@@ -22,6 +22,22 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+// for custom error pages
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    const errorCode = 500;
+    let errorMessage = 'Internal Server Error';
+
+    if (err.statusCode) {
+        errorCode = err.statusCode;
+        errorMessage = err.message;
+    }
+
+    res.status(errorCode).render('error', {
+        errorCode: errorCode
+    });
+});
+
 // there may be a source map warning associated with this
 app.get('/node_modules/bootstrap/dist/css/bootstrap.min.css', (req, res) => {
     const bootstrapPath = path.join(__dirname, '/node_modules/bootstrap/dist/css/bootstrap.min.css');
