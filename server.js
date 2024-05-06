@@ -8,6 +8,7 @@ Server listens on port 3001 unless specified in environment variables.
 
 // requirements in alphabetical order
 const express = require('express');
+const { MongoClient } = require('mongodb');
 const http = require('http');
 const path = require('path');
 const redis = require('redis'); // for a shared cache when re-using content, implement later
@@ -62,6 +63,8 @@ app.get('/node_modules/@fortawesome/fontawesome-free/css/all.min.css', (req, res
 app.get('/', (req, res) => {
     const showDiv = true; // for toggling divs in templates
     const myvar = "Dynamic Var";
+
+    // will need to make a series of database requests
     res.render('index', { showDiv, myvar });
 
 });

@@ -3,19 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet"> -->
-    <!-- <link href="node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf" rel="stylesheet"> -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
-    <title>Dynamic Home</title>
+    <title>Gutenberg</title>
     <body class="mx-0">
         <%- include('partials/header') %>
-        <h1>Variable: <%= myvar %> </h1>
-        <%- include('partials/card') %>
+
+        <div class="row justify-content-center">
+            <div class="col-md-5 card m-3 p-3 border-0">
+                <h2 class="card-title text-center px-2 py-2">
+                    <i class="fas fa-circle text-danger p-2 fs-3"></i>Featured:  Variable: <%= myvar %> 
+                </h2>
+                <div class="bg-image text-center" data-mdb-ripple-init data-mdb-ripple-color="light">
+                    <!-- PLACEHOLDER IMAGE. The real image will be retrieved at load time. -->
+                  <img src="/img/placeholder-ambulance-img.jpg" class="img-fluid rounded"/>
+                </div>
+                <div class="card-body">
+                <h4 class="card-title text-center"><%= myvar %> </h4>
+                  <a href="#!" class="btn btn-dark" data-mdb-ripple-init>Read More</a>
+                </div>
+            </div>
+            <div class="col-md-5 card m-3 p-3 border-0">
+                <h2 class="card-title text-center px-2 py-2">
+                    Featured:  Variable: <%= myvar %> 
+                </h2>
+                <div class="bg-image text-center" data-mdb-ripple-init data-mdb-ripple-color="light">
+                    <!-- PLACEHOLDER IMAGE. The real image will be retrieved at load time. -->
+                  <img src="/img/placeholder-ambulance-img.jpg" class="img-fluid rounded"/>
+                </div>
+                <div class="card-body">
+                <h4 class="card-title text-center"><%= myvar %> </h4>
+                  <a href="#!" class="btn btn-dark" data-mdb-ripple-init>Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-75 mx-4 justify-content-center">
+        <%- include('partials/text-card') %>
+        </div>
+
 
         <!-- Include live -->
-        <!-- Include featured -->
         <!-- Include  -->
 
         <%- include('partials/footer') %>
