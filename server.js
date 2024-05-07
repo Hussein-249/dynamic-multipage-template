@@ -8,16 +8,30 @@ Server listens on port 3001 unless specified in environment variables.
 
 // requirements in alphabetical order
 const express = require('express');
-const { MongoClient } = require('mongodb');
+// const { MongoClient } = require('mongodb');
 const http = require('http');
 const path = require('path');
 const redis = require('redis'); // for a shared cache when re-using content, implement later
+
+const imageHandler = require('./imageHandling/imageHandler')
+const routes = require('./routes/routes')
+const uniqueGen = require('./imageHandling/uniqueKeyGenerator')
+
+const adminRoute = require('./routes/admin');
+
+const articleRoute = require('./routes/article');
+
+
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
 const redisClient = redis.createClient();
+
+// const mongoURI = "mongodb://admin:admin@localhost:27017/";
+
+// const databaseClient = new MongoClient(mongoURI);
 
 app.set('view engine', 'ejs'); // using the express ejs view engine
 
@@ -41,6 +55,10 @@ app.use((err, req, res, next) => {
     });
 });
 
+app.use('/admin', adminRoute);
+
+app.use('/article', articleRoute);
+
 // The bootstrap and fortawesome code below can be removed if your solution uses a CDN to deliver the necessary files.
 // However, installing the necessary packes in the local directory will be better for customization.
 
@@ -61,8 +79,10 @@ app.get('/node_modules/@fortawesome/fontawesome-free/css/all.min.css', (req, res
 });
 
 app.get('/', (req, res) => {
+    // MongoClient.connect();
     const showDiv = true; // for toggling divs in templates
     const myvar = "Dynamic Var";
+    const articleImageID = 
 
     // will need to make a series of database requests
     res.render('index', { showDiv, myvar });
