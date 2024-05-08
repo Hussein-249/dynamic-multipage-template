@@ -6,9 +6,41 @@
     <link rel="icon" hfavicon.ico" type="image/x-icon">
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <title>Dynamic Home</title>
+    <title><%= articleTitle %></title>
 <body>
     <%- include('partials/header') %>
+    <div class="col position-fixed ms-4 mt-5 border border-dark" style="background: white; border-radius: 100px;">
+        <div class="d-flex flex-column m-2 text-center">
+            <div class="d-flex flex-column text-center">
+                <i class="fas fa-arrow-up fa-2x mx-1 my-2"></i>
+                <div class="fs-6">Previous</div>
+            </div>
+            <div class="d-flex flex-column text-center">
+                <i class="fas fa-arrow-down fa-2x mx-1 my-2"></i>
+                <div class="fs-6">Next</div>
+            </div>
+            <i class="fas fa-file-audio fa-2x mx-1 my-3"></i>
+            <i class="fas fa-moon fa-2x mx-1 my-3"></i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 p-5">
+        </div>
+        <div class="col-md-8 px-3 py-5 my-5 border-end border-dark border-2">
+            <div class="fs-5">
+                Some content paragraph.Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print,
+                 graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to
+                  have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.
+            </div>
+        </div>
+        <div class="col-md-2 px-3 py-5 my-5">
+            <div>1</div>
+            <div>Alternate article title</div>
+            
+            <div>2</div>
+            <div>Alternate article title</div>
+        </div>
+    </div>
     <%- include('partials/footer') %>
 </body>
 </html>
