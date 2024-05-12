@@ -1,30 +1,27 @@
 /*
  * Original Author (OA): Hussein-249
  * 
- * Description: A very basic Express server.
+ * Description: A basic Express server to serve EJS template with content dynamically added
+ * based on .
  * Server listens on port 3000 unless specified in environment variables.
  * 
  * EXECUTION:
  * npm start
- * 
  * OR
- * 
  * node server.js
- * 
 */
 
-// requirements in alphabetical order
+// official modules in alphabetical order
 const express = require('express');
-const { MongoClient } = require('mongodb');
 const http = require('http');
+const { MongoClient } = require('mongodb');
 const path = require('path');
 const redis = require('redis'); // for a shared cache when re-using content, implement later
 
-
-// imports from project-code
-const imageHandler = require('./imageHandling/image_handler')
+// imports or modules from project-code
+const imageHandler = require('./image_handle/image_handler')
 // const routes = require('./routes/routes')
-const uniqueGen = require('./imageHandling/unique_key_gen')
+const uniqueGen = require('./image_handle/unique_key_gen')
 
 
 const PORT = process.env.PORT || 3000;
@@ -36,10 +33,6 @@ const articleRoute = require('./routes/article');
 const liveRoute = require('./routes/live');
 
 const redisClient = redis.createClient();
-
-// const mongoURI = "mongodb://admin:admin@localhost:27017/";
-
-// const databaseClient = new MongoClient(mongoURI);
 
 app.set('view engine', 'ejs'); // using the express ejs view engine
 

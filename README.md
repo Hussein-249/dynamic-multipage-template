@@ -1,5 +1,8 @@
+![](https://img.shields.io/badge/EJS-red)
 # Multipage Express Template
 ![](https://img.shields.io/badge/Development-Ongoing-blue)
+![](https://img.shields.io/badge/EJS-maroon) 
+![](https://img.shields.io/badge/Javascript-fde427)
 
 > An Express template / project to provide a solution for managing large websites, aimed for blogs and news sites.
 
@@ -11,15 +14,17 @@ Web applications and web sites whose main method of content delivery is through 
 
 The serverside code is written in Javascript using Node, and requires the following npm packages:
 
-- Bootstrap for responsive and accessible styling
-- Express for middleware
-- ejs for templating
-- mongodb for interacting with a mongodb database
-- redis for cacheing commonly-used elements across pages
+- ```Bootstrap``` for responsive and accessible styling
+- ```Express``` for middleware
+- ```ejs``` for templating
+- ```mongodb``` for interacting with a mongodb database
+- ```redis``` for cacheing commonly-used elements across pages
 
-MongoDB is used to serve article / blog content and media.
+MongoDB is used to serve article / blog text. Media retrieval is achieved through local storage and a custom store and search implementation accessible via the admin view.
 
 # Environment
+
+This app is developed with ```Node.js v21.5.0```. All necessary packages are included in package.json.
 
 # Implemented Features
 
