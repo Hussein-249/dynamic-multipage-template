@@ -2,11 +2,12 @@ const { createHash } = require('blake2');
 
 
 function hashImageName(articleName) {
-    /* This function hashes a string input and returns the hash.
-     * The hash method is blake2b. 
-     * Blake2b was selected as the hash method as it is faster than sha256.
-     * Moreover, this use case aims to generate unique strings, and not to hide information.
-    */
+    /** 
+     * Takes a string returns the blake2b hash 
+     * */
+
+    // Blake2b was selected as the hash method as it is faster than sha256.
+    // Moreover, this use case aims to generate unique strings, and not to hide information, so if sha is stronger it is irrelevant
 
     // blake does not accept a raw string as an argument, but rather a buffer object.
     // We need to create a buffer object from the input string.
@@ -20,6 +21,11 @@ function hashImageName(articleName) {
 
 function nameToUniqueKey(articleName) {
     hashString = hashImageName(articleName);
+
+    if (typeof(hashString) !== 'string') {
+        throw new Error('Hash did not successfully return a string.');
+    }
+    
     return { hashString, articleName };
 }
 
