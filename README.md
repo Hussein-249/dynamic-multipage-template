@@ -1,4 +1,3 @@
-![](https://img.shields.io/badge/EJS-red)
 # Multipage Express Template
 ![](https://img.shields.io/badge/Development-Ongoing-blue)
 ![](https://img.shields.io/badge/EJS-maroon) 

@@ -13,8 +13,9 @@
 
 // official modules in alphabetical order
 const express = require('express');
+const helmet = require('helmet');
 const http = require('http');
-const { MongoClient } = require('mongodb');
+const rlimit = require('express-rate-limit');
 const path = require('path');
 const redis = require('redis'); // for a shared cache when re-using content, implement later
 
@@ -25,7 +26,6 @@ const uniqueGen = require('./image_handle/unique_key_gen')
 
 
 const PORT = process.env.PORT || 3000;
-
 const app = express();
 
 const adminRoute = require('./routes/admin');
@@ -34,11 +34,21 @@ const liveRoute = require('./routes/live');
 
 const redisClient = redis.createClient();
 
+const rateLimit = rlimit({
+    windowMs: 15 * 60 * 1000,
+    max: 125,
+    message: 'Excessive number of requests from this IP. Please try again in a few minutes.'
+});
+
 app.set('view engine', 'ejs'); // using the express ejs view engine
 
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(helmet());
+
+app.use(rateLimit);
 
 // for custom error pages
 app.use((err, req, res, next) => {
@@ -81,10 +91,9 @@ app.get('/node_modules/@fortawesome/fontawesome-free/css/all.min.css', (req, res
 });
 
 app.get('/', (req, res) => {
-    // MongoClient.connect();
     const showDiv = true; // for toggling divs in templates
     const myvar = "Dynamic Var";
-    const articleImageID = 
+    // const articleImageID = 
 
     // will need to make a series of database requests
     res.render('index', { showDiv, myvar });
