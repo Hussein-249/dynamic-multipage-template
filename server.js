@@ -2,7 +2,7 @@
  * Original Author (OA): Hussein-249
  * 
  * Description: A basic Express server to serve EJS template with content dynamically added
- * based on .
+ * based on the appropriate information stored in the database.
  * Server listens on port 3000 unless specified in environment variables.
  * 
  * EXECUTION:
@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // for custom error pages
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    const errorCode = 500;
+    let errorCode = 500;
     let errorMessage = 'Internal Server Error';
 
     if (err.statusCode) {

@@ -8,9 +8,9 @@ function findArticleImage(articleName, dirName) {
 
 
 function storeImage(articleName, pathToImages) {
-    uniqueKey = uniqueGen.nameToUniqueKey(articleName);
-    newDirName = uniqueKey.hashString;
-    imgName = uniqueKey.articleName;
+    const uniqueKey = uniqueGen.nameToUniqueKey(articleName);
+    const newDirName = uniqueKey.hashString;
+    const imgName = uniqueKey.articleName;
     uniquePath = path.join(pathToImages, newDirName);
 
     try {
