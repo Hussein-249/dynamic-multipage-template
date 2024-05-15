@@ -20,6 +20,8 @@
                 <div class="fs-6">Next</div>
             </div>
             <i class="fas fa-moon fa-lg mx-1 my-3" id="dark-mode-toggle"></i>
+            <div class="fs-6 mb-3">Darken</div>
+
         </div>
     </div>
     <div class="row">
@@ -31,7 +33,6 @@
             </div>
             <% for (var i = 0; i < numParagraphs; i++) { %>
                 <div class="fs-5 m-4">
-
                     <%= paragraphs[i] %>
                     Some content paragraph. Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print,
                      graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to
@@ -40,21 +41,26 @@
             <% } %>
         </div>
         <!-- placeholder most read section -->
-        <div class="col-md-2 px-3 py-5 my-5">
-            <div>1</div>
-            <div>Alternate article title</div>
-            
-            <div>2</div>
-            <div>Alternate article title</div>
+        <div class="col-md-2 px-3 py-5 my-5 d-none d-md-block">
+            <div class="fs-5">
+                <div>Alternate article title</div>
+            </div>
 
-            <div>3</div>
-            <div>Alternate article title</div>
+            <div class="fs-5 my-2">
+                <div>Alternate article title</div>
+            </div>
 
-            <div>4</div>
-            <div>Alternate article title</div>
+            <div class="fs-5 my-2">
+                <div>Alternate article title</div>
+            </div>
 
-            <div>5</div>
-            <div>Alternate article title</div>
+            <div class="fs-5 my-2">
+                <div>Alternate article title</div>
+            </div>
+
+            <div class="fs-5 my-2">
+                <div>Alternate article title</div>
+            </div>
         </div>
     </div>
     <%- include('partials/footer') %>
