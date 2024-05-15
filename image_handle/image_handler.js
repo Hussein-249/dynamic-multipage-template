@@ -3,6 +3,8 @@ const uniqueGen = require('./unique_key_gen')
 
 function findArticleImage(articleName, dirName) {
 
+    const ukey = uniqueGen.nameToUniqueKey(articleName);
+
     return 0;
 }
 

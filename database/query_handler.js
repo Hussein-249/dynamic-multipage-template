@@ -2,15 +2,21 @@ const { retrieveFeaturedDocuments, retrieveArticleObj, retrieveParagraphs } = re
 
 
 // when debugging queries, try viewing the results here first
-async function selectFeaturedArticle() {
-    let result = null;
+async function getRandomFeaturedArticle() {
+    let results = [];
     try {
-        result = await retrieveFeaturedDocuments();
+        results = await retrieveFeaturedDocuments();
     } catch (error) {
-        console.error('Error occurred during data query from handler: ', error);
+        console.error('Error occurred during data query from handler.\n ', error);
     }
 
-    return result;
+    const numFeatured = results.length;
+
+    let selection = Math.floor(Math.random() * numFeatured);
+
+    const selected = results[selection];
+
+    return selected;
 }
 
 
@@ -21,16 +27,29 @@ async function getParagraphsFromArticle(articleName) {
 
     let paragraphs = [];
     try {
-        paragraphs = await retrieveParagraphs(articleName);
+        articleObj = await retrieveArticleObj(articleName)
+        paragraphs = await retrieveParagraphs(articleObj);
     } catch (error) {
-        console.error('Error occurred during data query from handler: ', error);
+        console.error('Error occurred during data query from handler\n ', error);
     }
 
     return paragraphs;
 }
 
-// console.log(selectFeaturedArticle())
 
-console.log(retrieveArticleObj('Article Title'))
+async function getArticle(articleName) {
+    if (!(typeof articleName === 'string' || articleName instanceof String)) {
+        throw new Error('articleName parameter is not a string, cannot retrieve an article.');
+    }
 
-module.exports = { selectFeaturedArticle, getParagraphsFromArticle };
+    try {
+        result = await retrieveArticleObj(articleName);
+    } catch (error) {
+        console.error('Error occurred during data query from handler\n ', error);
+    }
+
+    return result;
+}
+
+
+module.exports = { getRandomFeaturedArticle, getParagraphsFromArticle, getArticle };

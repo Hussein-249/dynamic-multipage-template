@@ -11,11 +11,13 @@
  * node server.js
 */
 
-// modules in alphabetical order
+"use strict";
+
+// alphabetical order for consistency
 const express = require('express');
+const rlimit = require('express-rate-limit');
 const helmet = require('helmet');
 const http = require('http');
-const rlimit = require('express-rate-limit');
 const path = require('path');
 const redis = require('redis'); // for a shared cache when re-using content, implement later
 
@@ -72,7 +74,6 @@ app.use('/live', liveRoute);
 
 
 // The bootstrap and fortawesome code below can be removed if your solution uses a CDN to deliver the necessary files.
-// However, installing the necessary packes in the local directory is better for customization.
 
 // May not be the optimal solution to MIME type mismatch
 // there may be a source map warning associated with this
@@ -86,16 +87,21 @@ app.get('/node_modules/bootstrap/dist/css/bootstrap.min.css', (req, res) => {
 // Also redundant if using a CDN
 app.get('/node_modules/@fortawesome/fontawesome-free/css/all.min.css', (req, res) => {
     const faPath = path.join(__dirname, '/node_modules/@fortawesome/fontawesome-free/css/all.min.css');
-    res.setHeader('Content-Type', 'text/css'); // manually ensuring that fontawesome is recognized properly
+    res.setHeader('Content-Type', 'text/css'); // manually ensuring that fontawesome is recognized properly by setting MIME type
     res.sendFile(faPath);
 });
 
 app.get('/', (req, res) => {
     const showDiv = true; // for toggling divs in templates
     const myvar = "Dynamic Var";
-    // const articleImageID = 
 
-    // will need to make a series of database requests
+    res.render('index', { showDiv, myvar });
+
+});
+
+app.get('/home', (req, res) => {
+    const showDiv = true;
+    const myvar = "Dynamic Var";
     res.render('index', { showDiv, myvar });
 
 });
@@ -103,11 +109,11 @@ app.get('/', (req, res) => {
 app.listen(PORT, error => { 
     if (error) { console.log(error); }
     else {
-        console.log(`Server has been started. Listening on port: ${PORT}`);
+        console.log('\x1b[32m', 'Server has been started.', '\x1b[0m', 'Listening on port:', PORT);
         console.log(`Ctrl + C to terminate server.`);
-        console.log(`Viewable at: http://localhost:3000/'`);
-        console.log(`Admin Link: http://localhost:3000/admin'`);
-        console.log(`Live Update at: http://localhost:3000/live'`);
-        console.log(`Sample article at: http://localhost:3000/article'`);
+        console.log('Homepage:', '\x1b[35m', 'http://localhost:3000/', '\x1b[0m');
+        console.log('Admin link:', '\x1b[35m', 'http://localhost:3000/admin', '\x1b[0m');
+        console.log('Live link:', '\x1b[35m', 'http://localhost:3000/live', '\x1b[0m');
+        console.log('Sample article link:', '\x1b[35m', 'http://localhost:3000/article', '\x1b[0m');
     }
 });

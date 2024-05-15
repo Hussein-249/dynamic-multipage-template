@@ -9,7 +9,7 @@
     <title><%= articleTitle %></title>
 <body>
     <%- include('partials/header') %>
-    <div class="col position-fixed ms-4 mt-5 border border-dark" style="background: white; border-radius: 100px;">
+    <div class="col position-fixed ms-4 mt-5 border border-dark d-none d-md-block" style="background: white; border-radius: 100px;">
         <div class="d-flex flex-column m-2 text-center">
             <div class="d-flex flex-column text-center" id="previous-paragraph">
                 <i class="fas fa-arrow-up md-fa-2x mx-1 my-3"></i>
@@ -23,26 +23,19 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2 p-3">
+        <div class="col-md-2">
         </div>
-        <div class="col-md-8 px-3 py-5 my-5 border-end border-dark border-2">
-            <div class="" id="Article  Title">  </div>
-            <div class="fs-5">
-                Some content paragraph. Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print,
-                 graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to
-                  have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.
-                  <br>
-                  <br>
-
+        <div class="col-md-8 py-4 my-4 border-end border-dark border-2">
+            <div class="text-center fs-2 m-4 pb-2 border-bottom border-dark border-2" id="article-title">
+                <%= articleTitle %>
             </div>
-            <% for (var i = 0; i < paragraphs.length; i++) { %>
-                <div class="fs-5">
+            <% for (var i = 0; i < numParagraphs; i++) { %>
+                <div class="fs-5 m-4">
+
+                    <%= paragraphs[i] %>
                     Some content paragraph. Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print,
                      graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to
                       have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.
-                    <br>
-                  <br>
-
                 </div>
             <% } %>
         </div>
