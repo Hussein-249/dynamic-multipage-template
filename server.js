@@ -11,7 +11,7 @@
  * node server.js
 */
 
-// official modules in alphabetical order
+// modules in alphabetical order
 const express = require('express');
 const helmet = require('helmet');
 const http = require('http');
