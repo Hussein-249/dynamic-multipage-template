@@ -18,7 +18,7 @@
                 </h2>
                 <div class="bg-image text-center" data-mdb-ripple-init data-mdb-ripple-color="light">
                     <!-- PLACEHOLDER IMAGE. The real image will be retrieved at load time. -->
-                  <img src="/img/placeholder/wef.jpg" class="img-fluid rounded"/>
+                  <img src="/img/placeholder/wef.jpg" class="img-fluid rounded overflow-hidden" style="max-width: 100%; height: auto;"/>
                 </div>
                 <div class="card-body">
                 <h4 class="card-title text-center"><%= myvar %> </h4>
@@ -40,11 +40,11 @@
             </div>
         </div>
 
-        <div class="w-75 m-4 justify-content-center">
-          <div class="m-4">
+        <div class="col p-6 my-4 mx-6 justify-content-center">
+          <div class="m-5 w-75 p-5 justify-content-center">
             <%- include('partials/text-card') %>
           </div>
-          <div class="m-4">
+          <div class="m-5 w-75 p-5 justify-content-center">
             <%- include('partials/text-card') %>
           </div>
         </div>

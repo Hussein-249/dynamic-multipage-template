@@ -33,6 +33,7 @@ const app = express();
 const adminRoute = require('./routes/admin');
 const articleRoute = require('./routes/article');
 const liveRoute = require('./routes/live');
+const searchRoute = require('./routes/search');
 
 const redisClient = redis.createClient();
 
@@ -71,6 +72,7 @@ app.use((err, req, res, next) => {
 app.use('/admin', adminRoute);
 app.use('/article', articleRoute)
 app.use('/live', liveRoute);
+app.use('/search', searchRoute);
 
 
 // The bootstrap and fortawesome code below can be removed if your solution uses a CDN to deliver the necessary files.
@@ -96,24 +98,24 @@ app.get('/', (req, res) => {
     const myvar = "Dynamic Var";
 
     res.render('index', { showDiv, myvar });
-
 });
 
 app.get('/home', (req, res) => {
     const showDiv = true;
     const myvar = "Dynamic Var";
     res.render('index', { showDiv, myvar });
-
 });
 
 app.listen(PORT, error => { 
     if (error) { console.log(error); }
     else {
         console.log('\x1b[32m', 'Server has been started.', '\x1b[0m', 'Listening on port:', PORT);
-        console.log(`Ctrl + C to terminate server.`);
-        console.log('Homepage:', '\x1b[35m', 'http://localhost:3000/', '\x1b[0m');
-        console.log('Admin link:', '\x1b[35m', 'http://localhost:3000/admin', '\x1b[0m');
-        console.log('Live link:', '\x1b[35m', 'http://localhost:3000/live', '\x1b[0m');
-        console.log('Sample article link:', '\x1b[35m', 'http://localhost:3000/article', '\x1b[0m');
+        console.log('\x1b[0m', 'Ctrl + C to terminate server.');
+        console.log('\x1b[0m','Homepage:', '\x1b[35m', 'http://localhost:3000/', '\x1b[0m');
+        console.log('\x1b[0m','Admin link:', '\x1b[35m', 'http://localhost:3000/admin', '\x1b[0m');
+        console.log('\x1b[0m','Live link:', '\x1b[35m', 'http://localhost:3000/live', '\x1b[0m');
+        console.log('\x1b[0m','Sample article link:', '\x1b[35m', 'http://localhost:3000/article', '\x1b[0m');
+        console.log('\x1b[0m','Sample search result:', '\x1b[35m', 'http://localhost:3000/search/Poland', '\x1b[0m');
+        console.log('\x1b[0m','Alternate article link:', '\x1b[35m', 'http://localhost:3000/article/Poland%20wins%20FIVB%20World%20Cup%202021', '\x1b[0m');
     }
 });
