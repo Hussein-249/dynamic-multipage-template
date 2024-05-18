@@ -23,8 +23,6 @@ function storeImage(articleName, pathToImages) {
         const imagesInDir = fs.readdirSync(uniquePath);
         const existingNames = imagesInDir.filter(image => image.startsWith(imgName));
 
-
-
     } catch (err) { 
         console.error(err);
     }

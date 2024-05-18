@@ -29,9 +29,12 @@
                 <h2 class="card-title text-center px-2 py-2">
                     Featured:  Variable: <%= myvar %> 
                 </h2>
-                <div class="bg-image text-center" data-mdb-ripple-init data-mdb-ripple-color="light">
-                    <!-- PLACEHOLDER IMAGE. The real image will be retrieved at load time. -->
-                  <img src="/img/placeholder-ambulance-img.jpg" class="img-fluid rounded"/>
+                <div class="bg-image hover-overlay">
+
+                  <img src="/img/placeholder-ambulance-img.jpg" class="img-fluid rounded text-center "/>
+                  <a href="#!">
+                    <div class="mask" style="background-color: hsla(0, 0%, 98%, 0.2)"></div>
+                  </a>
                 </div>
                 <div class="card-body">
                 <h4 class="card-title text-center"><%= myvar %> </h4>

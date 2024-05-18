@@ -11,6 +11,7 @@
  * node server.js
 */
 
+// prevents silent errors
 "use strict";
 
 // alphabetical order for consistency

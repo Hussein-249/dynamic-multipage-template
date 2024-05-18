@@ -1,9 +1,15 @@
+/**
+ * This module directly queries the MongoDB database and directly selects data from JSON documents.
+ * Although some functions only manipulate documents and do not query the database, they are included in this module
+ * for simplicty as they directly interact with the objects and will be wrapped by the same query_handler module.
+ */
+
 require('dotenv').config();
 const { MongoClient } = require('mongodb');
 
+const uri = process.env.MONGODB_URI;
 
 async function retrieveArticleObj(articleName) {
-    const uri = process.env.MONGODB_URI;
     const filter = {
         'article_name': articleName
     };
@@ -22,21 +28,25 @@ async function retrieveArticleObj(articleName) {
 
 
 async function retrieveFeaturedDocuments() {
-    const uri = process.env.MONGODB_URI;
     const filter = {
         'featured': 'True'
     };
 
-    // Replace with valid authentication credentials in env
-    // if no auth is set then you can remove the userinfo section, but this is evidently a major security risk
-    // no need for NewUrlParder of UnifiedTopology options 
-    const client = await MongoClient.connect(uri);
+    try {
+        // Replace with valid authentication credentials in env
+        // if no auth is set then you can remove the userinfo section, but this is evidently a major security risk
+        // no need for NewUrlParder of UnifiedTopology options 
+        const client = await MongoClient.connect(uri);
 
-    const coll = client.db('dynamic-news-database').collection('Articles');
-    const cursor = coll.find(filter);
-    const result = await cursor.toArray();
-    await client.close();
-    return result;
+        const coll = client.db('dynamic-news-database').collection('Articles');
+        const cursor = coll.find(filter);
+        const result = await cursor.toArray();
+        await client.close();
+        return result;
+
+    } catch (err) {
+        throw err;
+    }
 };
 
 
@@ -44,16 +54,29 @@ async function retrieveParagraphs(articleObj) {
     let result = [];
 
     for (const key in articleObj) {
-        if (key.startsWith('p')) {
-            result.push(articleObj[key]);
-        }
+        if (key.startsWith('p')) { result.push(articleObj[key]); }
     }
 
     return result;
 };
 
+
 async function retrieveFeatureData(articleObj) {
     return;
 }
 
-module.exports = { retrieveFeaturedDocuments, retrieveArticleObj, retrieveParagraphs }
+
+async function retrieveMostReadArticles() {
+    try {
+        const client = await MongoClient.connect(uri);
+        const coll = client.db('dynamic-news-database').collection('Articles');
+        const topArticleArray = await coll.find().sort({dayviewcount: -1}).limit(5).toArray();
+        await client.close();
+        return topArticleArray;
+
+    } catch (err) {
+        throw err;
+    }
+}
+
+module.exports = { retrieveFeaturedDocuments, retrieveArticleObj, retrieveParagraphs, retrieveMostReadArticles }

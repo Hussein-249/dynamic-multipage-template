@@ -19,6 +19,10 @@
     "helmet": "^7.1.0",
     "mime": "^4.0.3",
     "mongodb": "^6.6.0",
+    "morgan": "^1.10.0",
     "redis": "^4.6.13"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }

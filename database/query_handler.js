@@ -1,3 +1,8 @@
+/**
+ * This module serves as a wrapper for the direct_query module.
+ */
+
+
 const { retrieveFeaturedDocuments, retrieveArticleObj, retrieveParagraphs } = require('./direct_query');
 
 

@@ -1,7 +1,10 @@
 # Multipage Express Template
 ![](https://img.shields.io/badge/Development-Ongoing-blue)
-![](https://img.shields.io/badge/EJS-maroon) 
+![](https://img.shields.io/badge/Node.js_v21.5-68A063)
 ![](https://img.shields.io/badge/Javascript-fde427)
+![](https://img.shields.io/badge/EJS-maroon)
+![](https://img.shields.io/badge/MongoDB-4db33d)
+
 
 > An Express template / project to provide a solution for managing large websites, aimed for blogs and news sites.
 
@@ -25,11 +28,16 @@ MongoDB is used to serve article / blog text. Media retrieval is achieved throug
 
 This app is developed with ```Node.js v21.5.0```. All necessary packages are included in package.json.
 
-# Implemented Features
+# Development Roadmap
+
+## Implemented Features
 
 No features have been fully implemented, as this project is in very early development.
 
-# Planned Features
+## Developing Features
+
+
+## Planned Features
 
 # Documentation
 As this project is aimed both for other developer to build on and for writers or small organizations to use as a template for newsites and blogs, this documentation entails a description of the source code, how to customize the content and layout, and creating new content as an admin.
