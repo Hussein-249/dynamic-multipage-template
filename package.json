@@ -4,7 +4,7 @@
   "description": "A template for dynamic websites or web apps with a large number of similar pages, such as news sites or blogs.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Hussein0249",
   "license": "ISC",

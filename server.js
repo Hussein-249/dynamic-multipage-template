@@ -26,6 +26,7 @@ const redis = require('redis'); // for a shared cache when re-using content, imp
 const imageHandler = require('./image_handle/image_handler')
 // const routes = require('./routes/routes')
 const uniqueGen = require('./image_handle/unique_key_gen')
+const logger = require('./debug/master_log');
 
 
 const PORT = process.env.PORT || 3000;
@@ -53,6 +54,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
 
 app.use(rateLimit);
+
+app.use(logger);
 
 // for custom error pages
 app.use((err, req, res, next) => {
