@@ -1,0 +1,26 @@
+{
+    "title": "Project Documentation",
+    "date": "2024-5-20",
+    "sections": [
+        {
+            "title": "Overview",
+            "text": "This application aims to both be a proof-of-concept and a professional solution for users seeking to host a blog or news platform. This documentations aims to cater towards users with technical backgrounds and users without technical backgrounds and users without technical backgrounds who want to use this app while understanding how to customize it and use it effectively.\n\n If you are a user without a technical backround, feel free to skip the technical sections and read the User Guide section directly, although I have written the documentation to cater towards learners of computer science. - H249"
+        },
+        {
+            "title": "Installation and Environment",
+            "text": "Installation: \n\n - Clone the Git repository here:"
+        },
+        {
+            "title": "Software Design",
+            "text": "This application is not Object-Oriented, and aims to loosely follow a MVC (Model-View-Control) pattern, as seen in the database module. An Object-Oriented approach did not suit the aim of this project, as the primary data type being handled is an article of text, which is already abstracted via the MVC layers."
+        },
+        {
+            "title": "Module Documentation",
+            "text": "Coming Soon"
+        },
+        {
+            "title": "User Guide",
+            "text": "Coming Soon"
+        }
+    ]
+}

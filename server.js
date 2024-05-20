@@ -98,16 +98,10 @@ app.get('/node_modules/@fortawesome/fontawesome-free/css/all.min.css', (req, res
     res.sendFile(faPath);
 });
 
-app.get('/', (req, res) => {
+app.get(['/', '/home'], (req, res) => {
     const showDiv = true; // for toggling divs in templates
     const myvar = "Dynamic Var";
 
-    res.render('index', { showDiv, myvar });
-});
-
-app.get('/home', (req, res) => {
-    const showDiv = true;
-    const myvar = "Dynamic Var";
     res.render('index', { showDiv, myvar });
 });
 
@@ -122,5 +116,6 @@ app.listen(PORT, error => {
         console.log('\x1b[0m','Sample article link:', '\x1b[35m', 'http://localhost:3000/article', '\x1b[0m');
         console.log('\x1b[0m','Sample search result:', '\x1b[35m', 'http://localhost:3000/search/Poland', '\x1b[0m');
         console.log('\x1b[0m','Alternate article link:', '\x1b[35m', 'http://localhost:3000/article/Poland%20wins%20FIVB%20World%20Cup%202021', '\x1b[0m');
+        console.log('\x1b[0m','Documentation:', '\x1b[35m', 'http://localhost:3000/documentation', '\x1b[0m');
     }
 });

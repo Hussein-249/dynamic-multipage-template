@@ -2,3 +2,4 @@ node_modules
 bootstrap-5.3.3
 favicon.ico
 log.txt
+.env

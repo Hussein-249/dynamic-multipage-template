@@ -22,9 +22,11 @@ The server-side code is written in Javascript using Node, and requires the follo
 - ```Express``` for middleware
 - ```ejs``` for templating
 - ```mongodb``` for interacting with a mongodb database
+- ```morgan``` for logging
 - ```redis``` for cacheing commonly-used elements across pages
+- Testing frameworks, see [Tests](#tests)
 
-MongoDB is used to serve article / blog text. Media retrieval is achieved through local storage and a custom store and search implementation accessible via the admin view.
+MongoDB is used to serve article / blog text. Media retrieval is achieved through local storage and a custom store and search implementation, which is accessible via the admin view.
 
 ## Environment
 
@@ -32,9 +34,13 @@ This app is developed with ```Node.js v21.5.0```. All necessary packages are inc
 
 # Tests
 
+<div id="tests">
 This project will include both ```Jest``` for unit tests and ```Selenium``` for end-to-end testing. These packages are included under devDependencies in package.json. Currently, only a basic database unti test has been written.
+</div>
 
 # Development Roadmap
+
+Diagram coming soon.
 
 ## Implemented Features
 
@@ -45,8 +51,9 @@ This project will include both ```Jest``` for unit tests and ```Selenium``` for 
 
 - [ ] Final Homepage layout
 - [ ] Final article layout
-- [ ] Live news feed logic and layoutrticle generation via templates and text stored in the database
+- [ ] Live news feed logic and layout
 - [ ] Basic admin interface for post CRUD operations.
+- [ ] Media retrieval without database querying
 - [ ] Redis caching
 
 ## Planned Features
@@ -61,4 +68,4 @@ Potentially:
 Coming soon.
 
 # Documentation
-As this project is aimed both for other developer to build on and for writers or small organizations to use as a template for newsites and blogs, this documentation entails a description of the source code, how to customize the content and layout, and creating new content as an admin.
+As this project is aimed both for other developers to build on and for writers or small organizations to use as a template for news sites and blogs, this documentation entails a description of the source code, how to customize the content and layout, and creating new content as an admin.

@@ -1,0 +1,8 @@
+DOCUMENTATION
+
+
+Overview
+This application aims to both be a proof-of-concept and a professional solution for users seeking to host a blog or news platform. 
+This documentations aims to cater towards users with technical backgrounds and users without technical backgrounds and users without technical backgrounds who want to use this app while understanding how to customize it and use it effectively.
+
+If you are a user without a technical backround, feel free to skip the technical sections and read the User Guide section directly, although I have written the documentation to cater towards learners of computer science. - H249
