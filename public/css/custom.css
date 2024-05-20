@@ -1,0 +1,19 @@
+.pointer:hover {
+    cursor: pointer;
+}
+
+.scale-up:hover {
+    animation: scale-up 0.15s ease-in-out forwards;
+}
+
+/* ANIMATIONS */
+
+@keyframes scale-up {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+

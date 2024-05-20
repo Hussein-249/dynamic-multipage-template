@@ -6,6 +6,8 @@
 ![](https://img.shields.io/badge/EJS-maroon)
 ![](https://img.shields.io/badge/MongoDB-4db33d)
 
+<!-- link to German README? -->
+
 > An Express template / project to provide a solution for managing large websites, aimed for authors of blogs and news sites.
 
 # Purpose

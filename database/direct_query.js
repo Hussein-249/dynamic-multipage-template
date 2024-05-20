@@ -62,7 +62,11 @@ async function retrieveParagraphs(articleObj) {
 
 
 async function retrieveFeatureData(articleObj) {
-    return;
+    try { 
+        return articleObj[metadata];
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 
@@ -77,6 +81,15 @@ async function retrieveMostReadArticles() {
     } catch (err) {
         throw err;
     }
+}
+
+
+async function retrieveSearchData(searchTag) {
+    const client = await MongoClient.connect(uri);
+    const coll = client.db('dynamic-news-database').collection('Articles');
+    await client.close();
+
+    return;
 }
 
 module.exports = { retrieveFeaturedDocuments, retrieveArticleObj, retrieveParagraphs, retrieveMostReadArticles }

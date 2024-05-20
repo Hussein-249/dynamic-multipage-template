@@ -24,18 +24,18 @@ const redis = require('redis'); // for a shared cache when re-using content, imp
 
 // imports or modules from project-code
 const imageHandler = require('./image_handle/image_handler')
-// const routes = require('./routes/routes')
 const uniqueGen = require('./image_handle/unique_key_gen')
 const logger = require('./debug/master_log');
-
-
-const PORT = process.env.PORT || 3000;
-const app = express();
-
+// importing routes
 const adminRoute = require('./routes/admin');
 const articleRoute = require('./routes/article');
 const liveRoute = require('./routes/live');
 const searchRoute = require('./routes/search');
+const documentationRoute = require('./routes/documentation');
+
+
+const PORT = process.env.PORT || 3000;
+const app = express();
 
 const redisClient = redis.createClient();
 
@@ -77,6 +77,7 @@ app.use('/admin', adminRoute);
 app.use('/article', articleRoute)
 app.use('/live', liveRoute);
 app.use('/search', searchRoute);
+app.use('/documentation', documentationRoute);
 
 
 // The bootstrap and fortawesome code below can be removed if your solution uses a CDN to deliver the necessary files.
