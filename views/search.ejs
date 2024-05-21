@@ -7,17 +7,18 @@
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <title>Gutenberg</title>
-    <body class="mx-0">
-        <%- include('partials/header') %>
-        <div class="col">
-            <% if (validResults) { %>
-                <div>Search Results</div>
-                <% for (var i = 0; i < numResults; i++) %>
-                    <%- include('partials/search-result', { index:i }) %>
-            <% } else  { %>
-                <div>No articles containing the specified tag or keyword.</div>
-            <% } %>
-            <%- include('partials/footer') %>
-        </div>
-    </body>
+</head>
+<body class="mx-0">
+    <%- include('partials/header') %>
+    <div class="col">
+        <% if (validResults) { %>
+            <div>Search Results</div>
+            <% for (var i = 0; i < numResults; i++) %>
+                <%- include('partials/search-result', { index:i }) %>
+        <% } else  { %>
+            <div>No articles containing the specified tag or keyword.</div>
+        <% } %>
+        <%- include('partials/footer') %>
+    </div>
+</body>
 </html>

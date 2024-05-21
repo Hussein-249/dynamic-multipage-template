@@ -1,7 +1,14 @@
 const fs = require('node:fs');
 const uniqueGen = require('./unique_key_gen')
 
-function findArticleImage(articleName, dirName) {
+
+function findArticleImage(articleName) {
+    /**
+     * Returns the path to an image associated with an article.
+     * 
+     * @param { string } articleName - the name of the article associated with the image
+     * @returns { string } imgPath - the path to the image
+     */
 
     const ukey = uniqueGen.nameToUniqueKey(articleName);
 

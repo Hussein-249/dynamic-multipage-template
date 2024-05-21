@@ -39,11 +39,11 @@ const app = express();
 
 const redisClient = redis.createClient();
 
-const rateLimit = rlimit({
-    windowMs: 15 * 60 * 1000,
-    max: 125,
-    message: 'Excessive number of requests from this IP. Please try again in a few minutes.'
-});
+// const rateLimit = rlimit({
+//     windowMs: 15 * 60 * 1000,
+//     max: 125,
+//     message: 'Excessive number of requests from this IP. Please try again in a few minutes.'
+// });
 
 app.set('view engine', 'ejs'); // using the express ejs view engine
 
@@ -53,7 +53,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(helmet());
 
-app.use(rateLimit);
+// app.use(rateLimit);
 
 app.use(logger);
 

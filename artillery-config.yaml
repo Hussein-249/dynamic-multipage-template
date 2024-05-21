@@ -1,0 +1,22 @@
+config:
+  target: 'http://localhost:3000'  # Replace with your Node.js app URL
+  phases:
+    - duration: 30    # Ramp up to 10 users over 1 minute
+      arrivalRate: 15
+      name: "Initial standard load test."
+    - duration: 10    # Spike to 1000 users for 10 seconds
+      arrivalRate: 1000
+      name: "Spike test 1000 users."
+    - duration: 30    # Ramp down to 10 users over 1 minute
+      arrivalRate: 15
+      name: "Post-spike rampdown."
+scenarios:
+  - flow:
+      - get:
+          url: "/"
+      - get:
+          url: "/live"
+      - get:
+          url: "/documentation"
+      - get:
+          url: "/article/Poland%20wins%20FIVB%20World%20Cup%202021"

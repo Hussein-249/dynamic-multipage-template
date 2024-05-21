@@ -3,7 +3,7 @@
  * May not be a necessary feature, but nice to have.
  */
 
-var paragraphIndex = 0;
+let paragraphIndex = 0;
 
 document.addEventListener('DOMContentLoaded', function() {
     focusNextParagraph();

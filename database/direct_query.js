@@ -71,6 +71,13 @@ async function retrieveFeatureData(articleObj) {
 
 
 async function retrieveMostReadArticles() {
+    /**
+     * Retrieves the top 5 most read articles in the database (ranked dayviewcount) as a list of JSON objects.
+     * Directly queries the database.
+     * 
+     * @param { } articleName
+     * @returns { array } topArticleArray - list of JSON objects
+     */
     try {
         const client = await MongoClient.connect(uri);
         const coll = client.db('dynamic-news-database').collection('Articles');
