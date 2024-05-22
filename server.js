@@ -1,8 +1,7 @@
 /*
  * Original Author (OA): Hussein-249
  * 
- * Description: A basic Express server to serve EJS template with content dynamically added
- * based on the appropriate information stored in the database.
+ * Description: A basic Express server to serve EJS template with content dynamically added based on the appropriate information stored in the database.
  * Server listens on port 3000 unless specified in environment variables.
  * 
  * EXECUTION:
@@ -17,6 +16,9 @@
 // alphabetical order for consistency
 const express = require('express');
 const rlimit = require('express-rate-limit');
+
+// custom implementation?
+// const removeHtmlComments = require('express-remove-html-comments'); 
 const helmet = require('helmet');
 const http = require('http');
 const path = require('path');
@@ -39,11 +41,12 @@ const app = express();
 
 const redisClient = redis.createClient();
 
-// const rateLimit = rlimit({
-//     windowMs: 15 * 60 * 1000,
-//     max: 125,
-//     message: 'Excessive number of requests from this IP. Please try again in a few minutes.'
-// });
+// Might need to disable this for load testing
+const rateLimit = rlimit({
+    windowMs: 15 * 60 * 1000,
+    max: 125,
+    message: 'Excessive number of requests from this IP. Please try again in a few minutes.'
+});
 
 app.set('view engine', 'ejs'); // using the express ejs view engine
 
@@ -53,7 +56,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(helmet());
 
-// app.use(rateLimit);
+// Might need to disable this for load testing
+app.use(rateLimit);
 
 app.use(logger);
 

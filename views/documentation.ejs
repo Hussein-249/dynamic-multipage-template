@@ -7,34 +7,44 @@
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Documentation</title>
     </head>
-<body class="m-0 p-0">
+<body class="m-0 p-0 bg-light">
     <div class="row m-0 p-0" id="main-content">
-        <div class="col-md-2 m-0 p-0">
-            <% for (let key in sections) { %>
-                <div class="m-3">
-                    <p>
-                        <%= sections[key].title %>
-                    </p>
-                </div>
-            <% } %>
+        <div class="col-md-2 m-0 my-5 p-0">
+            <div class="col position-fixed">
+                <% for (let key in sections) { %>
+                    <div class="m-3">
+                        <p>
+                            <%= sections[key].title %>
+                        </p>
+                    </div>
+                <% } %>
+            </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="d-flex m-3">
                 <p class="col-1 px-2">EN</p>
                 <div class="col-1 px-2">DE</div>
             </div>
-            <% for (let key in sections) { %>
-                <div class="fs-5 m-3">
-                    <h2>
-                        <%= sections[key].title %>
+            <% for (let section of sections) { %>
+                <div class="fs-5">
+                    <h2 class="p-1 m-0 border-bottom border-dark">
+                        <%= section.title %>
                     </h2>
-                    <p>
-                        <%= sections[key].text %>
-                    </p>
+                    <% for (let key in section) { %>
+                        <% if (key.startsWith('code')) { %>
+                            <p class="mx-2 p-3 font-mono text-light fs-6 w-75 bg-dark rounded">
+                                <%= section[key] %>
+                            </p>
+                        <% } else if (key.startsWith('text')) { %>
+                            <p class="p-2">
+                                <%= section[key] %>
+                            </p>
+                        <% } %>
+                    <% } %>
                 </div>
-                <div class="spacer" style="height: 50px;">
+                <div class="spacer" style="height: 40px;">
                 </div>
-            <% } %>
+            <% } %>            
         </div>
     </div>
 </body>
