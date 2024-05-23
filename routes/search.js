@@ -1,12 +1,21 @@
 const express = require('express');
 const router = express.Router();
+const { searchArticles } = require('../database/query_handler');
 
-router.get('/:searchKeyword', (req, res) => {
+
+// callback function must be async due to database query
+router.get('/:searchKeyword', async (req, res) => {
     let searchResults = [];
-    let validResults = false;
-    let numResults = 0;
 
-    res.render('search', { validResults, numResults });
+    try {
+        searchResults = await searchArticles(req.params.searchKeyword);
+
+    } catch (error) {
+        console.error(error)
+    }
+    let numResults = searchResults.length;
+
+    res.render('search', { numResults, searchResults });
 });
 
 module.exports = router;

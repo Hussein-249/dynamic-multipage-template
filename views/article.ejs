@@ -29,9 +29,14 @@
     <div class="row">
         <div class="col-md-2">
         </div>
-        <div class="col-md-8 py-4 my-4 border-end border-dark border-2">
-            <div class="text-center fs-2 m-4 pb-2 border-bottom border-dark border-2" id="article-title">
+        <div class="col-md-8 py-4 my-4 border-end border-secondary border-2">
+            <div class="text-center fs-2 m-4 mb-1 pb-2 border-bottom border-secondary border-2" id="article-title">
                 <%= articleTitle %>
+            </div>
+            <div class="text-secondary fs-6 mx-4 pb-2 border-bottom border-secondary border-2 row" id="article-details">
+                <div class="col">Author : </div>
+                <div class="col">Originally Published : </div>
+                <div class="col">Updated : </div>
             </div>
             <% for (var i = 0; i < numParagraphs; i++) { %>
                 <div class="fs-5 m-4">

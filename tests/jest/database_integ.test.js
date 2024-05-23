@@ -7,3 +7,9 @@ test('Confirming database initialized / connection and query valid', async () =>
     const len = pars.length;
     expect(len).toBe(2);
 });
+
+test('Confirming database search functionality / tags working as intended', async () => {
+    const result = await dq.retrieveSearchData('Poland');
+    const len = result.length;
+    expect(len).not.toBe(0);
+});

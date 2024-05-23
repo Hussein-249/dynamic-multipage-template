@@ -35,7 +35,7 @@ async function retrieveFeaturedDocuments() {
     try {
         // Replace with valid authentication credentials in env
         // if no auth is set then you can remove the userinfo section, but this is evidently a major security risk
-        // no need for NewUrlParder of UnifiedTopology options 
+        // no need for NewUrlParser of UnifiedTopology options 
         const client = await MongoClient.connect(uri);
 
         const coll = client.db('dynamic-news-database').collection('Articles');
@@ -92,11 +92,31 @@ async function retrieveMostReadArticles() {
 
 
 async function retrieveSearchData(searchTag) {
-    const client = await MongoClient.connect(uri);
-    const coll = client.db('dynamic-news-database').collection('Articles');
-    await client.close();
 
-    return;
+    let tagArray = [];
+
+    try { 
+        const client = await MongoClient.connect(uri);
+
+        const coll = client.db('dynamic-news-database').collection('Articles');
+
+        // find articles whose tag key contains the specified search tag
+        tagArray = await coll.find({ tags: { $in: [searchTag] } }).toArray();
+        console.log(`Retrieved ${tagArray.length} articles for search tag: ${searchTag}`);
+
+        await client.close();
+    } catch(error) {
+        // throw to query_handler
+        throw error;
+    } finally {
+        return tagArray;
+    }
 }
 
-module.exports = { retrieveFeaturedDocuments, retrieveArticleObj, retrieveParagraphs, retrieveMostReadArticles }
+module.exports = { 
+    retrieveFeaturedDocuments,
+    retrieveArticleObj,
+    retrieveParagraphs,
+    retrieveMostReadArticles,
+    retrieveSearchData
+}

@@ -11,10 +11,13 @@
 <body class="mx-0">
     <%- include('partials/header') %>
     <div class="col">
-        <% if (validResults) { %>
+        <% if (numResults > 0) { %>
             <div>Search Results</div>
-            <% for (var i = 0; i < numResults; i++) %>
-                <%- include('partials/search-result', { index:i }) %>
+            <% searchResults.forEach(article => { %>
+                <div>
+                    <%- include('partials/search-result', { article }) %>
+                </div>
+            <% }); %>
         <% } else  { %>
             <div>No articles containing the specified tag or keyword.</div>
         <% } %>

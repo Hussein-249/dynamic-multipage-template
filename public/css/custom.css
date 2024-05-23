@@ -1,3 +1,7 @@
+.bg-stone-200 {
+    background-color: #e7e5e4;
+}
+
 .pointer:hover {
     cursor: pointer;
 }

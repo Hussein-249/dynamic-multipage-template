@@ -1,10 +1,13 @@
 /**
  * This module serves as a wrapper for the direct_query module.
+ * direct_query simply re-throws caught errors to this handler.
+ * This allows the query functions to only consists of querying logic.
+ * Calling and error handling is separated here.
  */
 
 
-const { retrieveFeaturedDocuments, retrieveArticleObj, retrieveParagraphs } = require('./direct_query');
-
+const { retrieveFeaturedDocuments, retrieveArticleObj, retrieveParagraphs, retrieveSearchData } = require('./direct_query');
+// const errorLogger = require('../debug/master_log');
 
 // when debugging queries, try viewing the results here first
 async function getRandomFeaturedArticle() {
@@ -56,5 +59,16 @@ async function getArticle(articleName) {
     return result;
 }
 
+async function searchArticles(searchTag) {
+    tagArray = []
 
-module.exports = { getRandomFeaturedArticle, getParagraphsFromArticle, getArticle };
+    try {
+        tagArray = await retrieveSearchData(searchTag);
+    } catch (error) {
+        console.log(error)
+    } finally {
+        return tagArray;
+    }
+}
+
+module.exports = { getRandomFeaturedArticle, getParagraphsFromArticle, getArticle, searchArticles };

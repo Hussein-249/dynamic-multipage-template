@@ -4,7 +4,7 @@
  * May be integrated into unit testing and end-to-end testing.
  */
 
-const { getRandomFeaturedArticle, getArticle, getParagraphsFromArticle } = require('../database/query_handler');
+const { getRandomFeaturedArticle, getArticle, getParagraphsFromArticle, searchArticles } = require('../database/query_handler');
 
 
 async function printRandomFeaturedArticle() {
@@ -36,9 +36,21 @@ async function printArticleParagraphs(articleName) {
     }
 }
 
+async function printArticlesContainingTag(tag) {
+    try {
+        const articles = await searchArticles(tag);
+        console.log(articles);
+    } catch (error) {
+        // may be redundant since errors caught in the handler
+        console.error(error);
+    }
+}
+
 
 // printRandomFeaturedArticle();
 
 // printSelectedArticle('Italy wins FIVB World Cup 2022');
 
-printArticleParagraphs('Italy wins FIVB World Cup 2022');
+// printArticleParagraphs('Italy wins FIVB World Cup 2022');
+
+printArticlesContainingTag('Poland');
