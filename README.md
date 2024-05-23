@@ -6,7 +6,7 @@
 ![](https://img.shields.io/badge/EJS-maroon)
 ![](https://img.shields.io/badge/MongoDB-4db33d)
 
-[README auf Deutsch <i>hier<i> verfügbar!](https://github.com/Hussein-249/dynamic-multipage-template/blob/main/README-DE.md)
+[README auf Deutsch <i>hier</i> verfügbar!](https://github.com/Hussein-249/dynamic-multipage-template/blob/main/README-DE.md)
 
 > An Express template / project to provide a solution for managing large websites, aimed for authors of blogs and news sites.
 
