@@ -1,6 +1,13 @@
-<div class="row">
-    <img src="/img/placeholder/wef.jpg" class="img-fluid rounded overflow-hidden" style="max-width: 100%; height: auto;"/>
-    <div>
-        <%= article.title %> 
+<a href="<%= url.format({ pathname: '/article/' + article.article_name }) %>" class="text-decoration-none text-dark">
+    <div class="m-4 d-flex">
+        <img src="/img/placeholder/wef.jpg" class="col img-fluid rounded overflow-hidden" style="max-width: 25%; height: auto;"/>
+        <div clas="col">
+            <div class="col mx-3 fs-3 text-decoration-none">
+                <%= article['article_name'] %> 
+            </div>
+            <div class="mx-3 fs-5 text-decoration-none text-secondary">
+                Secondary title
+            </div>
+        </div>
     </div>
-</div>
+</a>

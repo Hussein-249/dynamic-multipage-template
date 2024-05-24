@@ -3,7 +3,7 @@ const { createHash } = require('blake2');
 
 function hashImageName(articleName) {
     /** 
-     * Takes a string returns the blake2b hash 
+     * Takes a string, returns the blake2b hash 
      * */
 
     // Blake2b was selected as the hash method as it is faster than sha256.
@@ -29,6 +29,8 @@ function nameToUniqueKey(articleName) {
     return { hashString, articleName };
 }
 
+
+// console.log(hashImageName('Poland wins FIVB World Cup 2021'));
 
 // export for use in imageHandler.js
 module.exports = { nameToUniqueKey };

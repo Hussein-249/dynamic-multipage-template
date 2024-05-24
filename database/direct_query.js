@@ -102,7 +102,9 @@ async function retrieveSearchData(searchTag) {
 
         // find articles whose tag key contains the specified search tag
         tagArray = await coll.find({ tags: { $in: [searchTag] } }).toArray();
-        console.log(`Retrieved ${tagArray.length} articles for search tag: ${searchTag}`);
+
+        // uncommenting will help debug
+        // console.log(`Retrieved ${tagArray.length} articles for search tag: ${searchTag}`);
 
         await client.close();
     } catch(error) {

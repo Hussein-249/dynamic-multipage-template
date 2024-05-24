@@ -61,28 +61,11 @@ app.use(rateLimit);
 
 app.use(logger);
 
-// for custom error pages
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    let errorCode = 500;
-    let errorMessage = 'Internal Server Error';
-
-    if (err.statusCode) {
-        errorCode = err.statusCode;
-        errorMessage = err.message;
-    }
-
-    res.status(errorCode).render('error', {
-        errorCode: errorCode
-    });
-});
-
 app.use('/admin', adminRoute);
 app.use('/article', articleRoute)
 app.use('/live', liveRoute);
 app.use('/search', searchRoute);
 app.use('/documentation', documentationRoute);
-
 
 // The bootstrap and fortawesome code below can be removed if your solution uses a CDN to deliver the necessary files.
 
@@ -108,6 +91,33 @@ app.get(['/', '/home'], (req, res) => {
 
     res.render('index', { showDiv, myvar });
 });
+
+// include error routes AFTER all other routes.
+// This ensures that it only handles errors that are not matched.
+
+app.use((req, res, next) => {
+    res.status(404).render('error', {
+      errorCode: 404,
+      errorMessage: 'Page not found'
+    });
+  });
+
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    let errorCode = 500;
+    let errorMessage = 'Internal Server Error';
+
+    if (err.statusCode) {
+        errorCode = err.statusCode;
+        errorMessage = err.message;
+    }
+
+    res.status(errorCode).render('error', {
+        errorCode: errorCode
+    });
+});
+
 
 app.listen(PORT, error => { 
     if (error) { console.log(error); }

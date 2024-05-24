@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A Gutenberg Article.">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link href="/css/custom.css" rel="stylesheet">
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
     <title><%= articleTitle %></title>
 </head>
-<body>
+<body class="font-quicksand-400">
     <%- include('partials/header') %>
     <div class="col position-fixed ms-4 mt-5 border border-dark d-none d-md-block" style="background: white; border-radius: 100px;">
         <div class="d-flex flex-column m-2 text-center">
@@ -29,17 +30,19 @@
     <div class="row">
         <div class="col-md-2">
         </div>
-        <div class="col-md-8 py-4 my-4 border-end border-secondary border-2">
-            <div class="text-center fs-2 m-4 mb-1 pb-2 border-bottom border-secondary border-2" id="article-title">
-                <%= articleTitle %>
+        <div class="col-md-8 p-5 pt-2 my-4 border-end border-secondary border-2">
+            <div class="text-center fs-2 m-4 mb-1 pb-2 border-bottom border-secondary border-2 font-quicksand-500" id="article-title">
+                <h1 class="mb-2">
+                    <%= articleTitle %>
+                </h1>
             </div>
-            <div class="text-secondary fs-6 mx-4 pb-2 border-bottom border-secondary border-2 row" id="article-details">
-                <div class="col">Author : </div>
-                <div class="col">Originally Published : </div>
+            <h2 class="text-secondary fs-6 mx-4 my-0 pb-2 border-bottom border-secondary border-2 row" id="article-details">
+                <div class="col">By : </div>
+                <div class="col">Published : </div>
                 <div class="col">Updated : </div>
-            </div>
+            </h2>
             <% for (var i = 0; i < numParagraphs; i++) { %>
-                <div class="fs-5 m-4">
+                <div class="fs-5 m-4 cs-text-justify">
                     <%= paragraphs[i] %>
                     Some content paragraph. Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print,
                      graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to

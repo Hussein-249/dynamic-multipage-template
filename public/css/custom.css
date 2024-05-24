@@ -1,6 +1,37 @@
+/* Colours */
 .bg-stone-200 {
     background-color: #e7e5e4;
 }
+
+/* Custom font and text properties */
+
+/* bootstraps's text-justify is deprecated, so this is a custom fix */
+.cs-text-justify {
+    text-align: justify;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('/fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+.font-quicksand-400, .font-quicksand-500 {
+    font-family: 'Quicksand';
+
+}
+
+.font-quicksand-500 {
+    font-weight: 500;
+}
+
+.font-quicksand-600 {
+    font-weight: 600;
+}
+
+
+/* For client-side interactions */
 
 .pointer:hover {
     cursor: pointer;
@@ -8,6 +39,12 @@
 
 .scale-up:hover {
     animation: scale-up 0.15s ease-in-out forwards;
+}
+
+/* arbitrary */
+
+.spacer {
+    height: 50px;
 }
 
 /* ANIMATIONS */

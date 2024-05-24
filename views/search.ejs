@@ -6,22 +6,31 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <title>Gutenberg</title>
+    <link href="/css/custom.css" rel="stylesheet">
+    <title>Gutenberg Search</title>
 </head>
-<body class="mx-0">
+<body class="mx-0 font-quicksand-400">
     <%- include('partials/header') %>
-    <div class="col">
-        <% if (numResults > 0) { %>
-            <div>Search Results</div>
-            <% searchResults.forEach(article => { %>
-                <div>
-                    <%- include('partials/search-result', { article }) %>
-                </div>
-            <% }); %>
-        <% } else  { %>
-            <div>No articles containing the specified tag or keyword.</div>
-        <% } %>
-        <%- include('partials/footer') %>
+    <div class="d-flex justify-content-center">
+        <div class="col"></div>
+        <div class="col-11 col-md-7 my-4">
+            <% if (numResults) { %>
+                <div class="text-center fs-3 mt-4 mb-5 font-quicksand-600">Search Results for <%= searchParam %></div>
+                <% searchResults.forEach(article => { %>
+                    <div class="m-auto">
+                        <div class="card mb-4">
+                            <%- include('partials/search-result', { article }) %>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else  { %>
+                <div class="spacer"></div>
+                <div class="fs-4 text-center">We couldn't find anything tagged '<%= searchParam %>' - trying searching for similar tags!</div>
+                <div class="spacer"></div>
+            <% } %>
+        </div>
+        <div class="col"></div>
     </div>
+    <%- include('partials/footer') %>
 </body>
 </html>
