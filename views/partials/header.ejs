@@ -1,14 +1,15 @@
 <header>
-    <div class="jumbotron jumbotron-fluid bg-white py-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-3">
-                    <img src="/img/gutenberg.png" class="img-fluid" alt="Responsive image">
+    <a href="/">
+        <div class="jumbotron jumbotron-fluid bg-white py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <img src="/img/gutenberg.png" class="img-fluid" alt="Responsive image">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    
+    </a>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ms-auto">
         <div class="container-fluid py-2">
             <a class="navbar-brand ">Menu</a>
@@ -23,9 +24,9 @@
                 <a class="nav-link" href="#">Opinion</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search titles or tags" aria-label="search">
-                <button class="btn text-white" type="submit" style="border-color: white;">Search</button>  
+            <form class="d-flex" id="search-form">
+                <input class="form-control me-2" id="search-input" type="search" placeholder="Search titles or tags" aria-label="search">
+                <button class="btn text-white" id="search-submit-button" type="submit" style="border-color: white;">Search</button>  
             </form>
         </div>    
     </nav>
