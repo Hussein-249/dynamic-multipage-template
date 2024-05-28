@@ -1,4 +1,4 @@
-# Multipage Express Template
+# GUTENBERG - A blogging and newspaper solution
 ![](https://img.shields.io/badge/Development-Ongoing-blue)
 ![](https://img.shields.io/badge/Tests-Passing-green)
 ![](https://img.shields.io/badge/Node.js_v21.5-68A063)
@@ -6,13 +6,13 @@
 ![](https://img.shields.io/badge/EJS-maroon)
 ![](https://img.shields.io/badge/MongoDB-4db33d)
 
-[README auf Deutsch <i>hier</i> verfügbar!](https://github.com/Hussein-249/dynamic-multipage-template/blob/main/README-DE.md)
+[README auf Deutsch <i>hier</i> verfügbar!:) ](https://github.com/Hussein-249/dynamic-multipage-template/blob/main/README-DE.md)
 
-> An Express template / project to provide a solution for managing large websites, aimed for authors of blogs and news sites.
+> Gutenberg is an Express.js project aiming to provide a simple yet comprehensive solution for managing large websites, aimed for authors of blogs and small news sites.
 
 # Purpose
 
-Web applications and web sites whose main method of content delivery is through a large number of pages require a scalable method of delivery. This project aims to serve as a template for building apps while keeping code low, aside from customization choices such as styling or frontend features.
+Web applications and web sites whose main method of content delivery is through a large number of pages require a scalable method of delivery with a responsive and intuitive layout for both producers and consumers. This project aims to serve as a template for building apps while keeping code low, aside from customization choices such as styling or frontend features.
 
 # Packages & Environment
 

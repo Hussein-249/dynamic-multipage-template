@@ -12,27 +12,20 @@
     <link href="/css/custom.css" rel="stylesheet">
     <title>Gutenberg</title>
 </head>
-<body class="mx-0 font-quicksand-400">
+<body class="font-quicksand-400 text-black">
     <%- include('partials/header') %>
-    <div class="row justify-content-center">
-        <div class="col-md-5 card m-4 p-2 border-0">
-            <h2 class="card-title text-center px-2 py-2">
-                <!-- <i class="fas fa-circle text-danger p-2 fs-3"></i> -->
-                <span class="badge bg-info px-2 py-1 shadow-1-strong mb-3"> Featured </span> Variable: <%= myvar %> 
-            </h2>
+    <div class="row justify-content-center w-100">
+        <div class="col-md-4 card m-4 p-2 border-0">
             <div class="bg-image" data-mdb-ripple-init data-mdb-ripple-color="light">
                 <!-- PLACEHOLDER IMAGE. The real image will be retrieved at load time. -->
               <img src="/img/placeholder/wef.jpg" class="img-fluid rounded overflow-hidden" style="max-width: 100%; height: auto;"/>
             </div>
             <div class="card-body border-bottom border-secondary border-2">
             <h4 class="card-title text-center"><%= myvar %> </h4>
-              <a href="#!" class="btn btn-dark" data-mdb-ripple-init>Read More</a>
+              <a href="#!" class="btn btn-dark bg-indigo-500" data-mdb-ripple-init>Read More</a>
             </div>
         </div>
-        <div class="col-md-5 card m-4 p-2 border-0">
-            <h2 class="card-title text-center px-2 py-2">
-                Featured:  Variable: <%= myvar %> 
-            </h2>
+        <div class="col-md-4 card m-4 p-2 border-0">
             <div class="bg-image ">
               <img src="/img/placeholder-ambulance-img.jpg" class="img-fluid rounded text-center "/>
             </div>

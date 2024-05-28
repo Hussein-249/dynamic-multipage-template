@@ -3,6 +3,18 @@
     background-color: #e7e5e4;
 }
 
+.bg-zinc-500 {
+    background-color: #71717a;
+}
+
+.bg-grey-700 {
+    background-color: #374151;
+}
+
+.bg-indigo-500 {
+    background-color: #0e2e2e;
+}
+
 /* Custom font and text properties */
 
 /* bootstraps's text-justify is deprecated, so this is a custom fix */
@@ -42,6 +54,10 @@
 }
 
 /* arbitrary */
+
+html {
+    scroll-behavior: smooth;
+}
 
 .spacer {
     height: 50px;

@@ -29,7 +29,7 @@
             "title": "Software Design",
             "text": "This application is not object-oriented, and aims to loosely follow a MVC (Model-View-Control) pattern, as seen in the database module. An object-oriented approach did not suit the aim of this project, as the primary data type being handled is an article of text, which is already abstracted via the MVC layers.",
             "text1": "The choice of technologies and libraries used to deliver this solution must be addressed. The project's runtime is Node, and all its features are achieved through Node modules. This due to the project's aim to be both versatile for developers and easy for non-technical users to deploy and use, hassle-free. Although most of the code is server-side, sharing the same language as the client-side JavaScript means a smoother development experience, as opposed to a Python framework such as Flask.",
-            "text2": "The second major choice was selecting MongoDB as the database. MongoDB's objects make it intuitive when adding the article data into the EJS templates. More importantly, MongoDB's collections do not have fixed schemas unlike tables in SQL databases. This allows articles to have a variable number of articles. Articles can be any legnth of articles, until the text reaches the MongoDB size limit (16MB)!"
+            "text2": "The second major choice was selecting MongoDB as the database. MongoDB's objects allow a seamless integration of article data into the EJS templates. More importantly, MongoDB's collections do not have fixed schemas unlike tables in SQL databases, allowing article to have a variable number of paragraphs. Articles can be any length of paragraphs, until the text reaches the MongoDB size limit (16MB)!"
         },
         {
             "title": "Development Process",
@@ -38,7 +38,7 @@
         },
         {
             "title": "Module Documentation",
-            "text": "This project has its code divided into modules for easy development, maintenance, and modularity."
+            "text": "This project has its code divided into modules for easy development, maintenance, and modularity. In this section, each module's main functions will be documented."
         },
         
         {
