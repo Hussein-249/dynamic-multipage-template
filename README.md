@@ -6,9 +6,9 @@
 ![](https://img.shields.io/badge/EJS-maroon)
 ![](https://img.shields.io/badge/MongoDB-4db33d)
 
-[README auf Deutsch <i>hier</i> verfügbar!:) ](https://github.com/Hussein-249/dynamic-multipage-template/blob/main/README-DE.md)
+[README auf Deutsch <i>hier</i> verfügbar! :)](https://github.com/Hussein-249/dynamic-multipage-template/blob/main/README-DE.md)
 
-> Gutenberg is an Express.js project aiming to provide a simple yet comprehensive solution for managing large websites, aimed for authors of blogs and small news sites.
+> Gutenberg is an Express.js project aiming to provide a simple yet comprehensive solution for managing blogs and small news sites, aimed for both developers and producers (authors / orgs) alike.
 
 # Purpose
 
@@ -37,7 +37,7 @@ This app is developed with ```Node.js v21.5.0```. All necessary packages are inc
 <div id="tests">
 This project will include both Jest for unit tests and Selenium for end-to-end testing. These packages are included under devDependencies in package.json. Currently, only a basic database unit test has been written.
 
-I've also added Artillery as a dependency for load testing, with a spike test configured in artillery-config.yaml. In the application's current iteration, the 
+I've also added Artillery as a dependency for load testing, with a spike test configured in artillery-config.yaml. In the application's current iteration, it does not appear to handle load testing well.
 </div>
 
 # Development Roadmap

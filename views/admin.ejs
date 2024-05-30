@@ -10,29 +10,48 @@
     <title>Admin Dashboard</title>
 </head>
 <body class="mx-0">
-    <%- include('partials/header') %>
-    <!-- Show daily site visits -->
-
+    <%- include('partials/banner') %>
+    <div class="spacer bg-indigo-500"></div>
+    
+    
+    
     <!-- 2x2 grid  for analytics - experimental-->
-    <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            1 of 2
-          </div>
-          <div class="col-md-6">
-            2 of 2
-          </div>
+    <div class="container-fluid p-0 m-0">
+      <div class="row">
+        <div id="Actions" class="col bg-indigo-500 text-white px-4 flex-grow-0">Column
+          <div> Manage Posts</div>
+          <div>New Post</div>
+          <div>Analytics</div>
+          <div>Cusotmization</div>
+          <div>Logout</div>
         </div>
-        <div class="row">
+    
+        <div class="col flex-grow-1 p-0 m-0">
+
+          <div class="row p-0 m-0">
             <div class="col">
-              1 of 2
+              <div class="p-4">
+                <%- include('admin/analytics') %>
+              </div>
             </div>
             <div class="col">
               2 of 2
+              <%- include('admin/latest-post') %>
             </div>
           </div>
+          <div class="row">
+              <div class="col">
+                1 of 2
+                <%- include('admin/app-health') %>
+
+              </div>
+              <div class="col">
+                2 of 2
+              </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- Show NR of bad responses, avg response time... -->
-    <%- include('partials/footer') %>
 </body>
 </html>

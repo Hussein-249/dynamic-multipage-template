@@ -45,6 +45,14 @@
 
 /* For client-side interactions */
 
+.sticky {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+  }
+  
+
 .pointer:hover {
     cursor: pointer;
 }
