@@ -33,7 +33,7 @@ async function retrieveFeaturedDocuments() {
     };
 
     try {
-        // Replace with valid authentication credentials in env
+        // add authentication credentials in env
         // if no auth is set then you can remove the userinfo section, but this is evidently a major security risk
         // no need for NewUrlParser of UnifiedTopology options 
         const client = await MongoClient.connect(uri);

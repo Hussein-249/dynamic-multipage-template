@@ -17,8 +17,6 @@
 const express = require('express');
 const rlimit = require('express-rate-limit');
 
-// custom implementation?
-// const removeHtmlComments = require('express-remove-html-comments'); 
 const helmet = require('helmet');
 const http = require('http');
 const path = require('path');
@@ -62,7 +60,7 @@ app.use(rateLimit);
 app.use(logger);
 
 app.use('/admin', adminRoute);
-app.use('/article', articleRoute)
+app.use('/article', articleRoute);
 app.use('/live', liveRoute);
 app.use('/search', searchRoute);
 app.use('/documentation', documentationRoute);
@@ -114,7 +112,8 @@ app.use((err, req, res, next) => {
     }
 
     res.status(errorCode).render('error', {
-        errorCode: errorCode
+        errorCode: errorCode,
+        errorMessage: errorMessage
     });
 });
 

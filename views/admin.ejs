@@ -7,43 +7,31 @@
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet">
-    <title>Admin Dashboard</title>
+    <title><%= adminName %> Dashboard</title>
 </head>
-<body class="mx-0">
-    <%- include('partials/banner') %>
-    <div class="spacer bg-indigo-500"></div>
-    
-    
-    
-    <!-- 2x2 grid  for analytics - experimental-->
-    <div class="container-fluid p-0 m-0">
+<body class="flex-grow">
+    <main class="container-fluid ">
       <div class="row">
-        <div id="Actions" class="col bg-indigo-500 text-white px-4 flex-grow-0">Column
-          <div> Manage Posts</div>
-          <div>New Post</div>
-          <div>Analytics</div>
-          <div>Cusotmization</div>
-          <div>Logout</div>
-        </div>
-    
-        <div class="col flex-grow-1 p-0 m-0">
-
-          <div class="row p-0 m-0">
+        <%- include('admin/partials/side-menu') %>
+        <div class="col flex-grow-1">
+          <div class="row">
+            <h1 class="p-3">Welcome, <%= adminName %>!</h1>
+          </div>
+          <div class="row">
             <div class="col">
-              <div class="p-4">
-                <%- include('admin/analytics') %>
+              <div>
+                <%- include('admin/partials/analytics') %>
               </div>
             </div>
             <div class="col">
               2 of 2
-              <%- include('admin/latest-post') %>
+              <%- include('admin/partials/latest-post') %>
             </div>
           </div>
           <div class="row">
               <div class="col">
                 1 of 2
-                <%- include('admin/app-health') %>
-
+                <%- include('admin/partials/app-health') %>
               </div>
               <div class="col">
                 2 of 2
@@ -51,7 +39,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </main>
     <!-- Show NR of bad responses, avg response time... -->
 </body>
 </html>

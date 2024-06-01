@@ -63,12 +63,18 @@
 
 /* arbitrary */
 
-html {
+html, body {
+    font-family: 'Quicksand';
     scroll-behavior: smooth;
+    height: 100%;
 }
 
 .spacer {
     height: 50px;
+}
+
+.small-menu-font {
+    font-size: 14px;
 }
 
 /* ANIMATIONS */
