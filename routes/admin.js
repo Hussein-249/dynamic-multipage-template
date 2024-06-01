@@ -1,6 +1,4 @@
 const express = require('express');
-// for draft.js
-const { EditorState, convertToRaw } = require('draft-js');
 const router = express.Router();
 
 
