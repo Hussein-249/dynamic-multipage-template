@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+    <title>New Post</title>
+</head>
+<body class="flex-grow vh-100">
+    <div class="container-fluid h-100">
+      <div class="row h-100">
+        <%- include('partials/side-menu') %>
+        <div class="col flex-grow-1 px-5 py-3">
+          <h1>New Article</h1>
+          <form id="article-content-metadata" class="col">
+            <div class="d-flex">
+              <div class="d-flex flex-column">
+                <label for="fname" class="p-2 my-2 mx-5">Author First Name</label>
+                <label for="lname" class="p-2 my-2 mx-5">Author Last Name</label>
+                <label for="tags" class="p-2 my-2 mx-5">Article Tags</label>
+                <label for="tags" class="p-2 my-2 mx-5">Category</label>
+              </div>
+              <div class="d-flex flex-column">
+                <input type="text" id="fname" name="firstname" placeholder="Author's first name" class="p-2 my-2" />
+                <input type="text" id="lname" name="lastname" placeholder="Author's last name" class="p-2 my-2"/>
+                <input type="text" id="tags" name="tags" placeholder="Article tags" class="p-2 my-2"/>
+                <select id="article-category" name="article-category" class="p-2 my-2">
+                  <option value="Business">Business</option>
+                  <option value="Economy">Economy</option>
+                  <option value="Opinion">Opinion</option>
+                  <option value="Sport">Sport</option>
+                  <option value="Live">LIVE</option>
+                </select>
+              </div>
+            </div>
+            <div id="text-editor" class="d-flex flex-column justify-content-center m-5">
+                <textarea id="textarea" class="flex-grow-1 resize-disable border-disable border-focus-disable" placeholder="Write your article here!"></textarea>
+            </div>
+            <div id="buttons" class="mx-5">
+              <button type="button" class="p-1 px-4 m-2 rounded">Publish</button> 
+              <button type="button" class="p-1 px-4 m-1">
+              <i class="fas fa-lg fa-clock me-2"></i>
+              Schedule Publish
+              </button> 
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script defer src="/js/create.js"></script>
+</body>
+</html>

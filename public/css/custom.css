@@ -73,6 +73,18 @@ html, body {
     height: 50px;
 }
 
+.resize-disable {
+    resize: none;
+}
+
+.border-disable {
+    border: 0; 
+}
+
+.border-focus-disable:focus-within {
+    border: 0; 
+}
+
 .small-menu-font {
     font-size: 14px;
 }
