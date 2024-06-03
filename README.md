@@ -1,5 +1,6 @@
 # GUTENBERG - A blogging and newspaper solution
 ![](https://img.shields.io/badge/Development-Ongoing-blue)
+![](https://img.shields.io/github/issues/hussein-249/dynamic-multipage-template)
 ![](https://img.shields.io/badge/Tests-Passing-green)
 ![](https://img.shields.io/badge/Node.js_v21.5-68A063)
 ![](https://img.shields.io/badge/Javascript-fde427)
