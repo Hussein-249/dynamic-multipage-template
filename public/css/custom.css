@@ -46,14 +46,6 @@
 
 /* For client-side interactions */
 
-.sticky {
-    position: -webkit-sticky; /* For Safari */
-    position: sticky;
-    top: 0;
-    z-index: 1020;
-  }
-  
-
 .pointer:hover {
     cursor: pointer;
 }
@@ -69,6 +61,13 @@ html, body {
     scroll-behavior: smooth;
     height: 100%;
 }
+
+/* header {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+} */
 
 textarea, textarea:focus {
     border: none;
@@ -88,10 +87,6 @@ input:focus {
 }
 
 .border-disable {
-    border: 0; 
-}
-
-.border-focus-disable:focus-within {
     border: 0; 
 }
 

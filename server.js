@@ -124,7 +124,7 @@ app.listen(PORT, error => {
         console.log('\x1b[32m', 'Server has been started.', '\x1b[0m', 'Listening on port:', PORT);
         console.log('\x1b[0m', 'Ctrl + C to terminate server.');
         console.log('\x1b[0m','Homepage:', '\x1b[35m', 'http://localhost:3000/', '\x1b[0m');
-        console.log('\x1b[0m','Admin link:', '\x1b[35m', 'http://localhost:3000/admin', '\x1b[0m');
+        console.log('\x1b[0m','Admin link:', '\x1b[35m', 'http://localhost:', PORT, '/admin', '\x1b[0m');
         console.log('\x1b[0m','Live link:', '\x1b[35m', 'http://localhost:3000/live', '\x1b[0m');
         console.log('\x1b[0m','Sample article link:', '\x1b[35m', 'http://localhost:3000/article', '\x1b[0m');
         console.log('\x1b[0m','Sample search result:', '\x1b[35m', 'http://localhost:3000/search/Poland', '\x1b[0m');
