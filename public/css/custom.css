@@ -1,4 +1,5 @@
 /* Colours */
+
 .bg-stone-200 {
     background-color: #e7e5e4;
 }
@@ -69,6 +70,15 @@ html, body {
     height: 100%;
 }
 
+textarea, textarea:focus {
+    border: none;
+    outline: none;
+}
+
+input:focus {
+    outline: none;
+}
+
 .spacer {
     height: 50px;
 }
@@ -99,4 +109,3 @@ html, body {
         transform: scale(1.05);
     }
 }
-

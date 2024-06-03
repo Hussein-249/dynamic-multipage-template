@@ -9,39 +9,51 @@
     <link href="/css/custom.css" rel="stylesheet">
     <title>New Post</title>
 </head>
-<body class="flex-grow vh-100">
+<body class="flex-grow">
     <div class="container-fluid h-100">
-      <div class="row h-100">
+      <div class="row">
         <%- include('partials/side-menu') %>
-        <div class="col flex-grow-1 px-5 py-3">
-          <h1>New Article</h1>
+        <div class="col-9 flex-grow-0 mx-auto px-5 py-4">
+          <h2 class="mb-4 pb-2 text-center border-bottom border-2 w-100 mx-auto">New Article</h2>
           <form id="article-content-metadata" class="col">
             <div class="d-flex">
-              <div class="d-flex flex-column">
-                <label for="fname" class="p-2 my-2 mx-5">Author First Name</label>
-                <label for="lname" class="p-2 my-2 mx-5">Author Last Name</label>
-                <label for="tags" class="p-2 my-2 mx-5">Article Tags</label>
-                <label for="tags" class="p-2 my-2 mx-5">Category</label>
-              </div>
-              <div class="d-flex flex-column">
-                <input type="text" id="fname" name="firstname" placeholder="Author's first name" class="p-2 my-2" />
-                <input type="text" id="lname" name="lastname" placeholder="Author's last name" class="p-2 my-2"/>
-                <input type="text" id="tags" name="tags" placeholder="Article tags" class="p-2 my-2"/>
-                <select id="article-category" name="article-category" class="p-2 my-2">
-                  <option value="Business">Business</option>
-                  <option value="Economy">Economy</option>
-                  <option value="Opinion">Opinion</option>
-                  <option value="Sport">Sport</option>
-                  <option value="Live">LIVE</option>
-                </select>
+              <div class="row">
+                <!-- Leftmost col containing labels -->
+                <div class="col">
+                  <label for="author" class="p-1 my-2 mx-5">Author</label>
+                  <label for="tags" class="p-1 my-2 mx-5 text-right">Article Tags</label>
+                </div>
+                <!-- Left inputs-->
+                <div class="col flex-grow-0">
+                  <input type="text" id="author" name="author" placeholder="Article Author" class="p-1 my-2" />
+                  <input type="text" id="tags" name="tags" placeholder="Article tags" class="p-1 my-2"/>
+                </div>
+                <!-- Right col containing labels -->
+                <div class="col">
+                  <label for="article-category" class="p-1 my-2 mx-5">Category</label>
+                  <label for="image-upload" class="p-1 my-2 mx-5">Image</label>
+                </div>
+                <!-- Right inputs-->
+                <div class="col flex-grow-0">
+                  <select id="article-category" name="article-category" class="p-1 my-2">
+                    <option value="Business">Business</option>
+                    <option value="Economy">Economy</option>
+                    <option value="Opinion">Opinion</option>
+                    <option value="Sport">Sport</option>
+                    <option value="Live">LIVE</option>
+                  </select>
+                  <input type="file" name="image-upload" accept="image/*" placeholder="Select Image" class="p-1 my-2"/>
+                </div>
               </div>
             </div>
-            <div id="text-editor" class="d-flex flex-column justify-content-center m-5">
-                <textarea id="textarea" class="flex-grow-1 resize-disable border-disable border-focus-disable" placeholder="Write your article here!"></textarea>
+            <div id="text-editor" class="d-flex flex-column mx-5 my-4 fs-5 h-100">
+                <input type="text" name="articl-title" placeholder="Article title goes here." class="p-2 my-2 border-disable border-bottom border-focus-disable"/>
+                <textarea id="textarea" class="p-2 flex-grow-1 resize-disable border-focus-disable" placeholder="Write your article here!"></textarea>
             </div>
             <div id="buttons" class="mx-5">
-              <button type="button" class="p-1 px-4 m-2 rounded">Publish</button> 
-              <button type="button" class="p-1 px-4 m-1">
+              <button type="button" class="p-1 px-4 m-2 btn btn-secondary">Save Draft</button> 
+              <button type="button" class="p-1 px-4 m-2 btn btn-danger">Publish</button> 
+              <button type="button" class="p-1 px-4 m-1 btn btn-warning">
               <i class="fas fa-lg fa-clock me-2"></i>
               Schedule Publish
               </button> 

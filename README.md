@@ -14,7 +14,9 @@
 
 Web applications and web sites whose main method of content delivery is through a large number of pages require a scalable method of delivery with a responsive and intuitive layout for both producers and consumers. This project aims to serve as a template for building apps while keeping code low, aside from customization choices such as styling or frontend features.
 
-# Packages & Environment
+# Installation & Environment
+
+## Packages
 
 The server-side code is written in Javascript using Node, and requires the following npm packages:
 
@@ -28,9 +30,20 @@ The server-side code is written in Javascript using Node, and requires the follo
 
 MongoDB is used to serve article / blog text. Media retrieval is achieved through local storage and a custom store and search implementation, which is accessible via the admin view.
 
-## Environment
+## Runtime Environment
 
 This app is developed with ```Node.js v21.5.0```. All necessary packages are included in package.json.
+
+## Installation
+
+- Clone this repository
+```
+git clone
+```
+- Set up the environment by installing the required dependencies included in the ```package.json``` file using
+```
+npm install
+```
 
 # Tests
 
