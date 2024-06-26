@@ -6,7 +6,7 @@
  */
 
 
-const { retrieveFeaturedDocuments, retrieveArticleObj, retrieveParagraphs, retrieveSearchData } = require('./direct_query');
+const { retrieveFeaturedDocuments, retrieveArticleObj, retrieveParagraphs, retrieveSearchData, publishArticleObj } = require('./direct_query');
 // const errorLogger = require('../debug/master_log');
 
 // when debugging queries, try viewing the results here first
@@ -71,4 +71,13 @@ async function searchArticles(searchTag) {
     }
 }
 
-module.exports = { getRandomFeaturedArticle, getParagraphsFromArticle, getArticle, searchArticles };
+async function publishArticle(articleObj) {
+    try {
+        publishArticleObj(articleObj);
+    } catch (error) {
+        console.error('Error publishing post:', error);
+    }
+    return;
+}
+
+module.exports = { getRandomFeaturedArticle, getParagraphsFromArticle, getArticle, searchArticles, publishArticle };

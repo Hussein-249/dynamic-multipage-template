@@ -16,7 +16,7 @@ async function retrieveArticleObj(articleName) {
 
     // Replace with valid authentication credentials in env
     // if no auth is set then you can remove the userinfo section, but this is evidently a major security risk
-    // no need for NewUrlParder of UnifiedTopology options 
+    // no need for NewUrlParser or UnifiedTopology options due to deprecation
     const client = await MongoClient.connect(uri);
 
     // always async wait to prevent server close error
@@ -72,26 +72,35 @@ async function retrieveFeatureData(articleObj) {
 
 async function retrieveMostReadArticles() {
     /**
-     * Retrieves the top 5 most read articles in the database (ranked dayviewcount) as a list of JSON objects.
+     * Retrieves the top 5 most read (published) articles in the database (ranked dayviewcount) as a list of JSON objects.
      * Directly queries the database.
      * 
      * @param { } articleName
      * @returns { array } topArticleArray - list of JSON objects
      */
+
+    let topArticleArray = [];
     try {
         const client = await MongoClient.connect(uri);
         const coll = client.db('dynamic-news-database').collection('Articles');
         const topArticleArray = await coll.find().sort({dayviewcount: -1}).limit(5).toArray();
         await client.close();
-        return topArticleArray;
-
     } catch (err) {
         throw err;
+    } finally { 
+        return topArticleArray;
     }
 }
 
 
 async function retrieveSearchData(searchTag) {
+     /**
+     * Retrieves all published articles in the database (ranked dayviewcount) as a list of JSON objects.
+     * Directly queries the database.
+     * 
+     * @param { } searchTag - string input from search form
+     * @returns { array } tagArray - list of JSON objects (published articles)
+     */
 
     let tagArray = [];
 
@@ -115,10 +124,23 @@ async function retrieveSearchData(searchTag) {
     }
 }
 
+async function publishArticleObj(articleObj) {
+
+    const client = await MongoClient.connect(uri);
+    const coll = client.db('dynamic-news-database').collection('Articles');
+    // adding JSON object (article) to the Articles collection
+    const res = await coll.insertOne(articleObj);
+    console.log('JSON object (article) inserted.');
+
+    await client.close();
+    return;
+}
+
 module.exports = { 
     retrieveFeaturedDocuments,
     retrieveArticleObj,
     retrieveParagraphs,
     retrieveMostReadArticles,
-    retrieveSearchData
+    retrieveSearchData,
+    publishArticleObj
 }

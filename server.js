@@ -38,8 +38,11 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 const redisClient = redis.createClient();
+redisClient.on('error', (err) => console.error('Redis client error:', err));
+redisClient.connect();
 
 // Might need to disable this for load testing
+// minute limit * seconds to min conversion * ms to s conversion
 const rateLimit = rlimit({
     windowMs: 15 * 60 * 1000,
     max: 125,
@@ -123,12 +126,12 @@ app.listen(PORT, error => {
     else {
         console.log('\x1b[32m', 'Server has been started.', '\x1b[0m', 'Listening on port:', PORT);
         console.log('\x1b[0m', 'Ctrl + C to terminate server.');
-        console.log('\x1b[0m','Homepage:', '\x1b[35m', 'http://localhost:3000/', '\x1b[0m');
-        console.log('\x1b[0m','Admin link:', '\x1b[35m', 'http://localhost:', PORT, '/admin', '\x1b[0m');
-        console.log('\x1b[0m','Live link:', '\x1b[35m', 'http://localhost:3000/live', '\x1b[0m');
-        console.log('\x1b[0m','Sample article link:', '\x1b[35m', 'http://localhost:3000/article', '\x1b[0m');
-        console.log('\x1b[0m','Sample search result:', '\x1b[35m', 'http://localhost:3000/search/Poland', '\x1b[0m');
-        console.log('\x1b[0m','Alternate article link:', '\x1b[35m', 'http://localhost:3000/article/Poland%20wins%20FIVB%20World%20Cup%202021', '\x1b[0m');
-        console.log('\x1b[0m','Documentation:', '\x1b[35m', 'http://localhost:3000/documentation', '\x1b[0m');
+        console.log('\x1b[0m','Homepage:', '\x1b[35m', `http://localhost:${PORT}/`, '\x1b[0m');
+        console.log('\x1b[0m', 'Admin link:', '\x1b[35m', `http://localhost:${PORT}/admin`, '\x1b[0m');
+        console.log('\x1b[0m','Live link:', '\x1b[35m', `http://localhost:${PORT}/live`, '\x1b[0m');
+        console.log('\x1b[0m','Sample article link:', '\x1b[35m', `http://localhost:${PORT}/article`, '\x1b[0m');
+        console.log('\x1b[0m','Sample search result:', '\x1b[35m', `http://localhost:${PORT}/search/Poland`, '\x1b[0m');
+        console.log('\x1b[0m','Alternate article link:', '\x1b[35m', `http://localhost:${PORT}/article/Poland%20wins%20FIVB%20World%20Cup%202021`, '\x1b[0m');
+        console.log('\x1b[0m','Documentation:', '\x1b[35m', `http://localhost:${PORT}/documentation`, '\x1b[0m');
     }
 });
