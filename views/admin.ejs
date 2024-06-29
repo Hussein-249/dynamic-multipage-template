@@ -17,10 +17,14 @@
           <div class="row">
             <h1 class="p-3">Welcome, <%= adminName %>!</h1>
           </div>
-          <div class="row">
+          <div class="d-flex flex-row flex-column-reverse flex-md-row">
             <div class="col">
               <div>
+                Analytics
                 <%- include('admin/partials/analytics') %>
+              </div>
+              <div>
+                <%- include('admin/partials/app-health') %>
               </div>
             </div>
             <div class="col">
@@ -29,10 +33,10 @@
             </div>
           </div>
           <div class="row">
-              <div class="col">
+              <!-- <div class="col">
                 1 of 2
                 <%- include('admin/partials/app-health') %>
-              </div>
+              </div> -->
               <div class="col">
                 2 of 2
               </div>

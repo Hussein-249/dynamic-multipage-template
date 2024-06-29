@@ -35,11 +35,31 @@ const documentationRoute = require('./routes/documentation');
 
 
 const PORT = process.env.PORT || 3000;
+const max_redis_connection_attempts = process.env.MAX_REDIS_CONN_ATTEMPTS
+let redis_connection_attempts = 0;
 const app = express();
 
-const redisClient = redis.createClient();
-redisClient.on('error', (err) => console.error('Redis client error:', err));
-redisClient.connect();
+
+try {
+    const redisClient = redis.createClient();
+    redisClient.on('error', (err) => console.error('Redis client error:', err));
+    redisClient.connect();
+} catch {
+    redis_connection_attempts++;
+    if ( redis_connection_attempts < max_redis_connection_attempts) {
+        try {
+            const redisClient = redis.createClient();
+            redisClient.on('error', (err) => console.error('Redis client error:', err));
+            redisClient.connect();
+        } catch (err) {
+            console.err('Redis error: ', err);
+        }
+    } else {
+        console.log("Unsuccessfully attempted to connect to Redis multiple times.");
+        console.log("Continuing to run app - key features will be disabled.");
+    }
+}
+
 
 // Might need to disable this for load testing
 // minute limit * seconds to min conversion * ms to s conversion
