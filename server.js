@@ -20,7 +20,6 @@ const rlimit = require('express-rate-limit');
 const helmet = require('helmet');
 const http = require('http');
 const path = require('path');
-const redis = require('redis'); // for a shared cache when re-using content, implement later
 
 // imports or modules from project-code
 const imageHandler = require('./image_handle/image_handler')
@@ -33,33 +32,8 @@ const liveRoute = require('./routes/live');
 const searchRoute = require('./routes/search');
 const documentationRoute = require('./routes/documentation');
 
-
 const PORT = process.env.PORT || 3000;
-const max_redis_connection_attempts = process.env.MAX_REDIS_CONN_ATTEMPTS
-let redis_connection_attempts = 0;
 const app = express();
-
-
-try {
-    const redisClient = redis.createClient();
-    redisClient.on('error', (err) => console.error('Redis client error:', err));
-    redisClient.connect();
-} catch {
-    redis_connection_attempts++;
-    if ( redis_connection_attempts < max_redis_connection_attempts) {
-        try {
-            const redisClient = redis.createClient();
-            redisClient.on('error', (err) => console.error('Redis client error:', err));
-            redisClient.connect();
-        } catch (err) {
-            console.err('Redis error: ', err);
-        }
-    } else {
-        console.log("Unsuccessfully attempted to connect to Redis multiple times.");
-        console.log("Continuing to run app - key features will be disabled.");
-    }
-}
-
 
 // Might need to disable this for load testing
 // minute limit * seconds to min conversion * ms to s conversion

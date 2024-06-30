@@ -23,5 +23,4 @@ Der serverseitige code ist mit Node in Javascript implementiert und erfordert di
 - ```ejs``` für templating (leider weiß ich die Deutsche übersetzung nicht :/ )
 - ```mongodb``` als Datenbank
 - ```morgan``` für Logging
-- ```redis``` (aber noch nicht implementiert)
 - ```Jest``` und ```Selenium``` (Informationen finden Sie im Abschnitt [Tests](#tests))

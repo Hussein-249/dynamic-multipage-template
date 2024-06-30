@@ -26,7 +26,6 @@ The server-side code is written in Javascript using Node, and requires the follo
 - ```ejs``` for templating
 - ```mongodb``` for interacting with a mongodb database
 - ```morgan``` for logging
-- ```redis``` for cacheing commonly-used elements across pages
 - ```Jest``` and ```Selenium``` (see [Tests](#tests))
 
 MongoDB is used to serve article / blog text. Media retrieval is achieved through local storage and a custom store and search implementation, which is accessible via the admin view.
@@ -70,10 +69,9 @@ Diagram coming soon.
 - [ ] Live news feed logic and layout
 - [ ] Basic admin interface for post CRUD operations.
 - [ ] Media retrieval without database querying
-- [ ] Redis caching
 
 ## Planned Features
-- [ ] In-built post analytics
+- [ ] Integrated post analytics
 
 Potentially:
 - [ ] LaTeX integration (will likely need to update the data query logic to handle this)
