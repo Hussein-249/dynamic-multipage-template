@@ -25,6 +25,7 @@ const path = require('path');
 const imageHandler = require('./image_handle/image_handler')
 const uniqueGen = require('./image_handle/unique_key_gen')
 const logger = require('./debug/master_log');
+const { init_db } = require('./database/init');
 // importing routes
 const adminRoute = require('./routes/admin');
 const articleRoute = require('./routes/article');
@@ -33,6 +34,7 @@ const searchRoute = require('./routes/search');
 const documentationRoute = require('./routes/documentation');
 
 const PORT = process.env.PORT || 3000;
+init_db();
 const app = express();
 
 // Might need to disable this for load testing
