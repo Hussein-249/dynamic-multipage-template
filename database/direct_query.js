@@ -28,6 +28,7 @@ async function retrieveArticleObj(articleName) {
 
 
 async function retrieveFeaturedDocuments() {
+    //check date such that less than a week old
     const filter = {
         'featured': 'True'
     };
@@ -59,15 +60,6 @@ async function retrieveParagraphs(articleObj) {
 
     return result;
 };
-
-
-async function retrieveFeatureData(articleObj) {
-    try { 
-        return articleObj[metadata];
-    } catch (err) {
-        console.log(err);
-    }
-}
 
 
 async function retrieveMostReadArticles() {
@@ -133,6 +125,10 @@ async function publishArticleObj(articleObj) {
     console.log('JSON object (article) inserted.');
 
     await client.close();
+    return;
+}
+
+async function retrieveLiveObjects() {
     return;
 }
 

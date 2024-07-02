@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
 
+const uri = process.env.MONGODB_URI;
 const fp = path.join(__dirname, 'init_flag.txt');
 
 function check_init() {
@@ -16,9 +17,15 @@ function check_init() {
 
 function init_db() {
     if (check_init()) return;
-
-    fs.writeFileSync(fp, 'TRUE');
-    return;
+    try {
+        const client = MongoClient.connect('mongodb://localhost:27017');
+        client.close();
+    } catch (err) {
+        throw err;
+    } finally {
+        fs.writeFileSync(fp, 'TRUE');
+        return;
+    }
 }
 
 module.exports = { init_db }

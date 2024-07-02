@@ -72,14 +72,7 @@ Diagram coming soon.
 
 ## Planned Features
 - [ ] Integrated post analytics
-
-Potentially:
-- [ ] LaTeX integration (will likely need to update the data query logic to handle this)
 - [ ] Colour and font customization
-
-## Additional Features (i.e. security features)
-
-Coming soon.
 
 # Documentation
 As this project is aimed both for other developers to build on and for writers or small organizations to use as a template for news sites and blogs, this documentation entails a description of the source code, how to customize the content and layout, and creating new content as an admin.

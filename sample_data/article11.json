@@ -3,13 +3,15 @@
     "metadata":{
         "author_fname": "Emily",
         "author_lname": "Smith",
-        "date_published": "Date",
+        "date_published": {"$date":"2024-06-01T11:30:00.000Z"},
         "date_modified": "John",
         "featured": "False",
         "dayviewcount": 300,
         "tags": ["South America", "education", "Argentina", "2024", "GDP"]
     },
     "article_title": "Argentina boasts GDP growth and falling inflation in Q1 2024",
+    "article_subtitle": "Argentina article subtitle.",
+    "image_caption": "Economic chart indicating economic growth.",
     "p1": "The South Korean government released a statement on Monday announcing a set of increased measures to welcome more exchange students in the country. ",
     "p2": "Sample 2",
     "p3": "The South Korean government released a statement on Monday announcing a set of increased measures to welcome more exchange students in the country. ",
