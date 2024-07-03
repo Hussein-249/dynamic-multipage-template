@@ -13,7 +13,7 @@
 // prevents silent errors
 "use strict";
 
-// alphabetical order for consistency
+// alphabetical order for consistency   
 const express = require('express');
 const rlimit = require('express-rate-limit');
 
@@ -26,6 +26,8 @@ const imageHandler = require('./image_handle/image_handler')
 const uniqueGen = require('./image_handle/unique_key_gen')
 const logger = require('./debug/master_log');
 const { init_db } = require('./database/init');
+const { getFeaturedArticles } = require('./database/query_handler');
+
 // importing routes
 const adminRoute = require('./routes/admin');
 const articleRoute = require('./routes/article');
@@ -82,11 +84,12 @@ app.get('/node_modules/@fortawesome/fontawesome-free/css/all.min.css', (req, res
     res.sendFile(faPath);
 });
 
-app.get(['/', '/home'], (req, res) => {
-    const showDiv = true; // for toggling divs in templates
-    const myvar = "Dynamic Var";
+app.get(['/', '/home'], async (req, res) => {
+    const homepageArticles = await getFeaturedArticles();
+    const firstArticle = homepageArticles[0];
+    const secondArticle = homepageArticles[1];
 
-    res.render('index', { showDiv, myvar });
+    res.render('index', { firstArticle, secondArticle });
 });
 
 // include error routes AFTER all other routes.
@@ -95,7 +98,7 @@ app.get(['/', '/home'], (req, res) => {
 app.use((req, res, next) => {
     res.status(404).render('error', {
       errorCode: 404,
-      errorMessage: 'Page not found'
+      errorMessage: 'Page not found.'
     });
   });
 
@@ -127,7 +130,8 @@ app.listen(PORT, error => {
         console.log('\x1b[0m','Live link:', '\x1b[35m', `http://localhost:${PORT}/live`, '\x1b[0m');
         console.log('\x1b[0m','Sample article link:', '\x1b[35m', `http://localhost:${PORT}/article`, '\x1b[0m');
         console.log('\x1b[0m','Sample search result:', '\x1b[35m', `http://localhost:${PORT}/search/Poland`, '\x1b[0m');
-        console.log('\x1b[0m','Alternate article link:', '\x1b[35m', `http://localhost:${PORT}/article/Poland%20wins%20FIVB%20World%20Cup%202021`, '\x1b[0m');
+        console.log('\x1b[0m','Sample article link:', '\x1b[35m', `http://localhost:${PORT}/article/Italy-wins-FIVB-World-Cup-2022`, '\x1b[0m');
+        console.log('\x1b[0m','Alternate article link:', '\x1b[35m', `http://localhost:${PORT}/article/This-year\'s-WEF-meeting-draws-to-a-close`, '\x1b[0m');
         console.log('\x1b[0m','Documentation:', '\x1b[35m', `http://localhost:${PORT}/documentation`, '\x1b[0m');
     }
 });

@@ -10,21 +10,13 @@ const { retrieveFeaturedDocuments, retrieveArticleObj, retrieveParagraphs, retri
 // const errorLogger = require('../debug/master_log');
 
 // when debugging queries, try viewing the results here first
-async function getRandomFeaturedArticle() {
-    let results = [];
+async function getFeaturedArticles() {
     try {
         results = await retrieveFeaturedDocuments();
+        return results;
     } catch (error) {
         console.error('Error occurred during data query from handler.\n ', error);
     }
-
-    const numFeatured = results.length;
-
-    let selection = Math.floor(Math.random() * numFeatured);
-
-    const selected = results[selection];
-
-    return selected;
 }
 
 
@@ -45,13 +37,13 @@ async function getParagraphsFromArticle(articleName) {
 }
 
 
-async function getArticle(articleName) {
-    if (!(typeof articleName === 'string' || articleName instanceof String)) {
-        throw new Error('articleName parameter is not a string, cannot retrieve an article.');
+async function getArticle(articleTitle) {
+    if (!(typeof articleTitle === 'string' || articleTitle instanceof String)) {
+        throw new Error('articleTitle parameter is not a string, cannot retrieve an article.');
     }
 
     try {
-        result = await retrieveArticleObj(articleName);
+        result = await retrieveArticleObj(articleTitle);
     } catch (error) {
         console.error('Error occurred during data query from handler\n ', error);
     }
@@ -80,4 +72,4 @@ async function publishArticle(articleObj) {
     return;
 }
 
-module.exports = { getRandomFeaturedArticle, getParagraphsFromArticle, getArticle, searchArticles, publishArticle };
+module.exports = { getFeaturedArticles, getParagraphsFromArticle, getArticle, searchArticles, publishArticle };

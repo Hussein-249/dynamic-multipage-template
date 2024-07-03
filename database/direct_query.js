@@ -8,10 +8,12 @@ require('dotenv').config();
 const { MongoClient } = require('mongodb');
 
 const uri = process.env.MONGODB_URI;
+const db_name = process.env.MONGODB_DB_NAME;
+const article_collection = process.env.ARTICLE_COLL;
 
-async function retrieveArticleObj(articleName) {
+async function retrieveArticleObj(articleTitle) {
     const filter = {
-        'article_name': articleName
+        'article_title': articleTitle
     };
 
     // Replace with valid authentication credentials in env
@@ -20,7 +22,7 @@ async function retrieveArticleObj(articleName) {
     const client = await MongoClient.connect(uri);
 
     // always async wait to prevent server close error
-    const coll = client.db('dynamic-news-database').collection('Articles');
+    const coll = client.db(db_name).collection(article_collection);
     const result = await coll.findOne(filter);
     await client.close();
     return result;
@@ -28,9 +30,9 @@ async function retrieveArticleObj(articleName) {
 
 
 async function retrieveFeaturedDocuments() {
-    //check date such that less than a week old
+    // check date such that less than a week old
     const filter = {
-        'featured': 'True'
+        'metadata.featured': 'True'
     };
 
     try {
@@ -40,7 +42,7 @@ async function retrieveFeaturedDocuments() {
         const client = await MongoClient.connect(uri);
 
         const coll = client.db('dynamic-news-database').collection('Articles');
-        const cursor = coll.find(filter);
+        const cursor = coll.find(filter).sort({ 'metadata.date_published' : -1}).limit(2); // select two most recently published articles with 'featured'
         const result = await cursor.toArray();
         await client.close();
         return result;
@@ -102,7 +104,7 @@ async function retrieveSearchData(searchTag) {
         const coll = client.db('dynamic-news-database').collection('Articles');
 
         // find articles whose tag key contains the specified search tag
-        tagArray = await coll.find({ tags: { $in: [searchTag] } }).toArray();
+        tagArray = await coll.find({ 'metadata.tags': { $in: [searchTag] } }).toArray();
 
         // uncommenting will help debug
         // console.log(`Retrieved ${tagArray.length} articles for search tag: ${searchTag}`);
@@ -119,7 +121,7 @@ async function retrieveSearchData(searchTag) {
 async function publishArticleObj(articleObj) {
 
     const client = await MongoClient.connect(uri);
-    const coll = client.db('dynamic-news-database').collection('Articles');
+    const coll = client.db(db_name).collection(article_collection);
     // adding JSON object (article) to the Articles collection
     const res = await coll.insertOne(articleObj);
     console.log('JSON object (article) inserted.');

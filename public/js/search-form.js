@@ -1,16 +1,18 @@
-const searchform = document.getElementById('search-form')
+const searchForm = document.getElementById('search-form');
+const searchInput = document.getElementById('search-input');
+const searchButton = document.getElementById('search-submit-button');
 
-searchform.addEventListener('submit', function(event) {
+
+searchForm.addEventListener('submit', function(event) {
     event.preventDefault();
-
-    const searchTag = document.getElementById('search-input')
-    console.log('Form submitted')
+    const searchTag = searchInput.value;
+    console.log('Search form submitted');
+    window.location.href = `/search/${searchTag}`;
 });
 
-document.getElementById('search-input').addEventListener('keydown', function(event) {
+searchInput.addEventListener('keydown', function(event) {
     if (event.key == 'Enter') {
         event.preventDefault();
-        const searchQuery = event.target.value;
-        document.getElementById('search-submit-button').click()
+        searchButton.click();
     }
 });

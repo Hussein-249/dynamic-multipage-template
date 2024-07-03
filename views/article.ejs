@@ -8,7 +8,7 @@
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet">
-    <title><%= articleTitle %></title>
+    <title><%= title %></title>
 </head>
 <body class="font-quicksand-400">
     <%- include('partials/header') %>
@@ -16,20 +16,20 @@
     </div>
     <div class="d-flex">
         <div class="col-md-2"></div>
-        <div class="col-md-8 p-sm-5 p-md-3 p-lg-5 pt-2 my-4 lh-lg border-bottom border-secondary border-2">
+        <div class="col-md-8 p-sm-5 p-md-3 p-lg-5 pt-2 mb-4 lh-lg border-bottom border-secondary border-2">
             <div class="text-center fs-2 m-4 mb-2 pb-3 border-bottom border-secondary border-2 font-quicksand-500" id="article-title">
                 <h1 class="mb-2">
-                    <%= articleTitle %>
+                    <%= title %>
                 </h1>
             </div>
             <h2 class="text-secondary fs-6 mx-4 my-0 pb-2 border-bottom border-secondary border-2 row" id="article-details">
-                <div class="col">By : </div>
-                <div class="col">Published : </div>
-                <div class="col">Updated : </div>
+                <div class="col">By : <%= authorString %></div>
+                <div class="col">Published :  <%= datePublished %></div>
+                <div class="col">Updated : <%= dateModified %></div>
             </h2>
             <div id="image-hold-div" class="m-4">
                 <img>
-                <h2 class="fs-6 px-5">Placeholder</h2>
+                <h2 class="fs-6 px-5"><%= imageCaption %></h2>
             </div>
             <% for (var i = 0; i < numParagraphs; i++) { %>
                 <div class="fs-5 m-4 cs-text-justify">

@@ -5,7 +5,7 @@
         "author_lname": "Smith",
         "date_published": {"$date":"2024-06-01T11:30:00.000Z"},
         "date_modified": "John",
-        "featured": "False",
+        "featured": "True",
         "dayviewcount": 300,
         "tags": ["South America", "education", "Argentina", "2024", "GDP"]
     },
