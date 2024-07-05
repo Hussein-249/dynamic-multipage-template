@@ -1,12 +1,12 @@
-<a href="<%= url.format({ pathname: '/article/' + article.article_name }) %>" class="text-decoration-none text-dark">
+<a href="<%= url.format({ pathname: '/article/' + article.article_title }) %>" class="text-decoration-none text-dark">
     <div class="m-4 d-flex">
-        <img src="/img/placeholder/wef.jpg" class="col img-fluid rounded overflow-hidden" style="max-width: 25%; height: auto;"/>
-        <div clas="col">
+        <img src="/img/placeholder/wef.jpg" class="col img-fluid rounded overflow-hidden d-none d-md-block" style="max-width: 25%; height: auto;"/>
+        <div class="col">
             <div class="col mx-3 fs-3 text-decoration-none">
-                <%= article['article_name'] %> 
+                <%= article['article_title'].replaceAll('-',' ') %> 
             </div>
             <div class="mx-3 fs-5 text-decoration-none text-secondary">
-                Secondary title
+                <%= article.article_subtitle %>
             </div>
         </div>
     </div>

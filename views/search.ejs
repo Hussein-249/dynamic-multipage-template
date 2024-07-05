@@ -13,9 +13,9 @@
     <%- include('partials/header') %>
     <div class="d-flex justify-content-center">
         <div class="col"></div>
-        <div class="col-11 col-md-7 my-4">
+        <div class="col-11 col-md-7 mb-2">
             <% if (numResults) { %>
-                <div class="text-center fs-3 mt-4 mb-5 font-quicksand-600">Search Results for <%= searchParam %></div>
+                <div class="text-center fs-3 my-4 font-quicksand-600">Search Results for <%= searchParam %></div>
                 <% searchResults.forEach(article => { %>
                     <div class="m-auto">
                         <div class="card mb-4">

@@ -23,7 +23,6 @@ const path = require('path');
 
 // imports or modules from project-code
 const imageHandler = require('./image_handle/image_handler')
-const uniqueGen = require('./image_handle/unique_key_gen')
 const logger = require('./debug/master_log');
 const { init_db } = require('./database/init');
 const { getFeaturedArticles } = require('./database/query_handler');
@@ -84,12 +83,12 @@ app.get('/node_modules/@fortawesome/fontawesome-free/css/all.min.css', (req, res
     res.sendFile(faPath);
 });
 
-app.get(['/', '/home'], async (req, res) => {
+app.get(['/', '/home', '/article'], async (req, res) => {
     const homepageArticles = await getFeaturedArticles();
     const firstArticle = homepageArticles[0];
     const secondArticle = homepageArticles[1];
 
-    res.render('index', { firstArticle, secondArticle });
+    res.render('index', { firstArticle, secondArticle, url: require('url') });
 });
 
 // include error routes AFTER all other routes.
@@ -105,13 +104,14 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    let errorCode = 500;
-    let errorMessage = 'Internal Server Error';
-
+    
     if (err.statusCode) {
         errorCode = err.statusCode;
         errorMessage = err.message;
     }
+
+    let errorCode = 500;
+    let errorMessage = 'Internal Server Error';
 
     res.status(errorCode).render('error', {
         errorCode: errorCode,
@@ -128,7 +128,6 @@ app.listen(PORT, error => {
         console.log('\x1b[0m','Homepage:', '\x1b[35m', `http://localhost:${PORT}/`, '\x1b[0m');
         console.log('\x1b[0m', 'Admin link:', '\x1b[35m', `http://localhost:${PORT}/admin`, '\x1b[0m');
         console.log('\x1b[0m','Live link:', '\x1b[35m', `http://localhost:${PORT}/live`, '\x1b[0m');
-        console.log('\x1b[0m','Sample article link:', '\x1b[35m', `http://localhost:${PORT}/article`, '\x1b[0m');
         console.log('\x1b[0m','Sample search result:', '\x1b[35m', `http://localhost:${PORT}/search/Poland`, '\x1b[0m');
         console.log('\x1b[0m','Sample article link:', '\x1b[35m', `http://localhost:${PORT}/article/Italy-wins-FIVB-World-Cup-2022`, '\x1b[0m');
         console.log('\x1b[0m','Alternate article link:', '\x1b[35m', `http://localhost:${PORT}/article/This-year\'s-WEF-meeting-draws-to-a-close`, '\x1b[0m');

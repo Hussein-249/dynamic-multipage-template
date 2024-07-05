@@ -6,6 +6,7 @@ const retrieve = require('../docs/retrieve_docs')
 
 const router = express.Router();
 
+
 router.get('/', (req, res) => {
     const docJSONObj = retrieve.retreive_docs_as_JSON();
 
@@ -17,6 +18,7 @@ router.get('/', (req, res) => {
 
     res.render('documentation', { keys, sections });
 });
+
 
 router.get('/markdown', (req, res) => {
     const docPath = path.join(__dirname, '../docs/documentation.md');

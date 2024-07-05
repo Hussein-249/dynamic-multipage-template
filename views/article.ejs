@@ -16,7 +16,7 @@
     </div>
     <div class="d-flex">
         <div class="col-md-2"></div>
-        <div class="col-md-8 p-sm-5 p-md-3 p-lg-5 pt-2 mb-4 lh-lg border-bottom border-secondary border-2">
+        <div class="col-md-8 p-sm-5 p-md-3 p-lg-2 pt-2 mb-4 lh-lg border-bottom border-secondary border-2">
             <div class="text-center fs-2 m-4 mb-2 pb-3 border-bottom border-secondary border-2 font-quicksand-500" id="article-title">
                 <h1 class="mb-2">
                     <%= title %>
@@ -28,18 +28,12 @@
                 <div class="col">Updated : <%= dateModified %></div>
             </h2>
             <div id="image-hold-div" class="m-4">
-                <img>
-                <h2 class="fs-6 px-5"><%= imageCaption %></h2>
+                <img src="<%= imagePath %>" class="img-fluid rounded overflow-hidden article-img m-auto d-block"/>
+                <h2 class="fs-6 p-3 m-auto d-block text-center border-bottom border-secondary border-2"><i><%= imageCaption %></i></h2>
             </div>
             <% for (var i = 0; i < numParagraphs; i++) { %>
                 <div class="fs-5 m-4 cs-text-justify">
                     <%= paragraphs[i] %>
-                    Some content paragraph. Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print,
-                     graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to
-                      have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book. The passage 
-                      experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again
-                       during the 90s as desktop publishers bundled the text with their software. Today it's seen all around the web; on templates,
-                        websites, and stock designs.
                 </div>
             <% } %>
         </div>
@@ -47,21 +41,21 @@
     </div>
         <div class="d-flex justify-content-center">
             <div class="col"></div>
-                <div class="col-8 mt-2 text-center">
+                <div class="col-7 mt-2 mb-3 text-center">
                     <div class="fs-3">Most Read Today</div>
                     <div class="fs-4">
                         <a href="#" class="text-decoration-none">
-                            <div class="card p-3 m-3 text-decoration-none">
+                            <div class="card p-3 mx-3 my-4 text-decoration-none">
                                 Alternate article title
                             </div>
                         </a>
                         <a href="#" class="text-decoration-none">
-                            <div class="card p-3 m-3 text-decoration-none">
+                            <div class="card p-3 mx-3 my-4  text-decoration-none">
                                 Alternate article title
                             </div>
                         </a>
                         <a href="#" class="text-decoration-none">
-                            <div class="card p-3 m-3">
+                            <div class="card p-3 mx-3 my-4 ">
                                 Alternate article title
                             </div>
                         </a>

@@ -3,6 +3,8 @@ const router = express.Router();
 
 // import modules from code
 const { getParagraphsFromArticle, getArticle } = require('../database/query_handler');
+const { findArticleImage } = require('../image_handle/image_handler');
+
 
 
 router.get('/:articleTitle', async (req, res) => {
@@ -11,6 +13,7 @@ router.get('/:articleTitle', async (req, res) => {
     let imageCaption = '';
     let datePublished = '';
     let dateModified = '';
+    let imagePath = '';
     try {
         articleObj = await getArticle(req.params.articleTitle);
         if (articleObj) {
@@ -23,13 +26,21 @@ router.get('/:articleTitle', async (req, res) => {
             dateModified = `${dateModified.getFullYear()}-${String(dateModified.getMonth() + 1).padStart(2, '0')}-${String(dateModified.getDate()).padStart(2, '0')}, ${String(dateModified.getHours()).padStart(2, '0')}:${String(dateModified.getMinutes()).padStart(2, '0')}`;
             paragraphs = await getParagraphsFromArticle(articleTitle);
             numParagraphs = paragraphs.length;
+            try {
+                imagePath = findArticleImage(articleTitle);
+                imageCaption = articleObj.image_caption;
+            } catch(err) {
+                imagePath = '';
+                imageCaption = '';
+            }
+            
         } else {
             const errorCode = 404;
             const errorMessage = 'Hmm, we couldn\'t find that article. Maybe it was renamed or deleted?';
             return res.status(errorCode).render('error', { errorMessage, errorCode})
         }
 
-        res.render('article', { title, paragraphs, numParagraphs, imageCaption, authorString, datePublished, dateModified}); 
+        res.render('article', { title, paragraphs, numParagraphs, imageCaption, authorString, datePublished, dateModified, imagePath}); 
     } catch (error) {
         console.log('Cannot find or render article content.\n', error);
         const errorCode = 500;

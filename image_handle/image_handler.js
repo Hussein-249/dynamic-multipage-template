@@ -1,54 +1,37 @@
-const fs = require('node:fs');
-const uniqueGen = require('./unique_key_gen')
+const fs = require('fs');
+const path = require('path');
+const uniqueGen = require('./unique_key_gen');
 
 
-function findArticleImage(articleName) {
+function isImage(file) {
+     const extensions = ['.png', '.jpg', '.jpeg'];
+     const extension = path.extname(file).toLowerCase();
+     return extensions.includes(extension);
+}
+
+
+function findArticleImage(articleTitle) {
     /**
      * Returns the path to an image associated with an article.
      * 
-     * @param { string } articleName - the name of the article associated with the image
-     * @returns { string } imgPath - the path to the image
+     * @param { string } articleTitle - the name of the article associated with the image
+     * @returns { string } the path to the image
      */
 
-    const ukey = uniqueGen.nameToUniqueKey(articleName);
-
-    return 0;
-}
-
-
-function storeImage(articleName, pathToImages) {
-    const uniqueKey = uniqueGen.nameToUniqueKey(articleName);
-    const newDirName = uniqueKey.hashString;
-    const imgName = uniqueKey.articleName;
-    uniquePath = path.join(pathToImages, newDirName);
+    const ukey = uniqueGen.nameToUniqueKey(articleTitle);
 
     try {
-        if (!fs.existsSync(uniquePath)) {
-            fs.mkdir(uniquePath)
-        }
+        var searchDir = path.join(__dirname, '../public/img', ukey);
+        var files = fs.readdirSync(searchDir);
+        var image = files.find(file => file.toLowerCase().startsWith(articleTitle.toLowerCase()));
 
-        const imagesInDir = fs.readdirSync(uniquePath);
-        const existingNames = imagesInDir.filter(image => image.startsWith(imgName));
-
-    } catch (err) { 
-        console.error(err);
+        if (image && isImage(image)) {
+            return path.join('/img', ukey, image);
+        } 
+    } catch(err) {
+        console.error('Unable to locate directory for the image for this article!');
+        throw(err);
     }
-
-    return;
 }
 
-
-function setImageName(articleName, pathToImages) {
-    imageName = uniqueGen.nameToUniqueKey(articleName);
-
-    // global replacement (immutable, therefore store in new variable)
-    sanitizedName = imageName.articleName.replace(/ /g, '');
-    
-    return imageName.hashString + '_' + sanitizedName;
-}
-
-// res = setImageName("First Article With Image")
-
-// console.log(res)
-
-module.exports = { findArticleImage, storeImage, setImageName };
+module.exports = { findArticleImage };

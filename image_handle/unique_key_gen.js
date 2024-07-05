@@ -26,11 +26,11 @@ function nameToUniqueKey(articleName) {
         throw new Error('Hash did not successfully return a string.');
     }
     
-    return { hashString, articleName };
+    return hashString;
 }
 
 
-// console.log(hashImageName('Poland wins FIVB World Cup 2021'));
+// console.log(hashImageName(''));
 
 // export for use in imageHandler.js
 module.exports = { nameToUniqueKey };

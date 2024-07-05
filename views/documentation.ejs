@@ -9,12 +9,12 @@
     <link href="/css/custom.css" rel="stylesheet">
     <title>Documentation</title>
     </head>
-<body class="m-0 p-0 bg-indigo-500 font-quicksand-400 text-white">
+<body class="m-0 p-0 font-quicksand-400 text-dark">
     <div class="row m-0 p-0" id="main-content">
-        <div class="col-md-2 m-0 my-5 p-0">
+        <div class="col-md-2 m-0 p-0 pt-5 bg-dark">
             <div class="col position-fixed">
                 <div class="m-3">
-                    <a class="text-dark text-decoration-none" href="#">
+                    <a class="text-white text-decoration-none" href="#">
                         Top
                     </a>
                 </div>
@@ -29,7 +29,7 @@
                 <% } %>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 px-4">
             <div class="d-flex m-3">
                 <p class="col-1 px-2">EN</p>
                 <div class="col-1 px-2">DE</div>
@@ -41,19 +41,18 @@
                     </h2>
                     <% for (let key in section) { %>
                         <% if (key.startsWith('code')) { %>
-                            <p class="mx-2 p-3 font-mono text-light fs-6 w-75 bg-dark rounded">
+                            <p class="mx-2 p-3 font-mono text-white fs-6 w-75 bg-dark rounded">
                                 <%= section[key] %>
                             </p>
                         <% } else if (key.startsWith('text')) { %>
-                            <p class="p-2 mt-2">
+                            <p class="p-2 mt-2 cs-text-justify">
                                 <%= section[key] %>
                             </p>
                         <% } %>
                     <% } %>
                 </div>
-                <div class="spacer" style="height: 40px;">
-                </div>
-            <% } %>            
+                <div class="spacer" style="height: 20px;"></div>
+            <% } %>
         </div>
     </div>
 </body>

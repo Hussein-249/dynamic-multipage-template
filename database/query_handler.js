@@ -7,7 +7,7 @@
 
 
 const { retrieveFeaturedDocuments, retrieveArticleObj, retrieveParagraphs, retrieveSearchData, publishArticleObj } = require('./direct_query');
-// const errorLogger = require('../debug/master_log');
+
 
 // when debugging queries, try viewing the results here first
 async function getFeaturedArticles() {
