@@ -60,15 +60,14 @@ Diagram coming soon.
 ## Implemented Features
 
 - [x] Article generation via templates and text stored in the database
+- [x] Media retrieval without database querying
 - [x] Simple HTTP request logs
 
 ## Developing Features
 
 - [ ] Final Homepage layout
-- [ ] Final article layout
 - [ ] Live news feed logic and layout
-- [ ] Basic admin interface for post CRUD operations.
-- [ ] Media retrieval without database querying
+- [ ] Admin interface for post CRUD operations.
 
 ## Planned Features
 - [ ] Integrated post analytics

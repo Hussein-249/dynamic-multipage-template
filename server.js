@@ -23,7 +23,7 @@ const path = require('path');
 
 // imports or modules from project-code
 const imageHandler = require('./image_handle/image_handler')
-const logger = require('./debug/master_log');
+const { logger, errorLogger, dualConsoleError } = require('./debug/master_log');
 const { init_db } = require('./database/init');
 const { getFeaturedArticles } = require('./database/query_handler');
 
@@ -56,8 +56,8 @@ app.use(helmet());
 
 // Might need to disable this for load testing
 app.use(rateLimit);
-
 app.use(logger);
+app.use(errorLogger);
 
 app.use('/admin', adminRoute);
 app.use('/article', articleRoute);

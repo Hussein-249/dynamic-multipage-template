@@ -1,39 +1,44 @@
 /**
- * This module serves as a wrapper for the direct_query module.
- * direct_query simply re-throws caught errors to this handler.
- * This allows the query functions to only consists of querying logic.
- * Calling and error handling is separated here.
+ * This module largely serves as a controller for the direct_query module.
  */
 
-
 const { retrieveFeaturedDocuments, retrieveArticleObj, retrieveParagraphs, retrieveSearchData, publishArticleObj } = require('./direct_query');
+const { dualConsoleError } = require('../debug/master_log');
 
 
 // when debugging queries, try viewing the results here first
 async function getFeaturedArticles() {
+    let results = [];
     try {
         results = await retrieveFeaturedDocuments();
-        return results;
     } catch (error) {
-        console.error('Error occurred during data query from handler.\n ', error);
+        dualConsoleError('Error occurred during data query from handler.\n ', error);
     }
+        
+    return results;
 }
 
 
-async function getParagraphsFromArticle(articleName) {
-    if (!(typeof articleName === 'string' || articleName instanceof String)) {
-        throw new Error('articleName parameter is not a string, cannot retrieve an article.');
-    }
-
+async function getParagraphsFromArticle(articleTitle) {
+    
     let paragraphs = [];
     try {
-        articleObj = await retrieveArticleObj(articleName)
+
+        if (!(typeof articleTitle === 'string' || articleTitle instanceof String)) {
+            throw new Error('articleName parameter is not a string, cannot retrieve an article.');
+        }
+
+        articleObj = await retrieveArticleObj(articleTitle)
         paragraphs = await retrieveParagraphs(articleObj);
+
     } catch (error) {
-        console.error('Error occurred during data query from handler\n ', error);
+
+        dualConsoleError(error);
+
     }
 
     return paragraphs;
+
 }
 
 
@@ -45,11 +50,13 @@ async function getArticle(articleTitle) {
     try {
         result = await retrieveArticleObj(articleTitle);
     } catch (error) {
-        console.error('Error occurred during data query from handler\n ', error);
+        dualConsoleError('Error occurred during data query from handler\n ', error);
     }
 
     return result;
+
 }
+
 
 async function searchArticles(searchTag) {
     tagArray = []
@@ -57,17 +64,18 @@ async function searchArticles(searchTag) {
     try {
         tagArray = await retrieveSearchData(searchTag);
     } catch (error) {
-        console.log(error)
-    } finally {
-        return tagArray;
+        dualConsoleError(error);
     }
+        
+    return tagArray;
+    
 }
 
 async function publishArticle(articleObj) {
     try {
         publishArticleObj(articleObj);
     } catch (error) {
-        console.error('Error publishing post:', error);
+        dualConsoleError('Error publishing post:', error);
     }
     return;
 }

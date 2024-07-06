@@ -10,6 +10,8 @@ const { MongoClient } = require('mongodb');
 const uri = process.env.MONGODB_URI;
 const db_name = process.env.MONGODB_DB_NAME;
 const article_collection = process.env.ARTICLE_COLL;
+const live_collection = process.env.LIVE_COLL;
+
 
 async function retrieveArticleObj(articleTitle) {
     const filter = {
@@ -30,7 +32,6 @@ async function retrieveArticleObj(articleTitle) {
 
 
 async function retrieveFeaturedDocuments() {
-    // check date such that less than a week old
     const filter = {
         'metadata.featured': 'True'
     };
@@ -41,7 +42,7 @@ async function retrieveFeaturedDocuments() {
         // no need for NewUrlParser of UnifiedTopology options 
         const client = await MongoClient.connect(uri);
 
-        const coll = client.db('dynamic-news-database').collection('Articles');
+        const coll = client.db(db_name).collection(article_collection);
         const cursor = coll.find(filter).sort({ 'metadata.date_published' : -1}).limit(2); // select two most recently published articles with 'featured'
         const result = await cursor.toArray();
         await client.close();
@@ -76,7 +77,7 @@ async function retrieveMostReadArticles() {
     let topArticleArray = [];
     try {
         const client = await MongoClient.connect(uri);
-        const coll = client.db('dynamic-news-database').collection('Articles');
+        const coll = client.db(db_name).collection(article_collection);
         const topArticleArray = await coll.find().sort({dayviewcount: -1}).limit(5).toArray();
         await client.close();
     } catch (err) {
@@ -118,7 +119,14 @@ async function retrieveSearchData(searchTag) {
     }
 }
 
+
 async function publishArticleObj(articleObj) {
+    /**
+     * Pushes an article object to the articles collection in MongoDB.
+     * 
+     * @param { } searchTag - JSON object representing the article and its metadata
+     * @returns { }
+     */
 
     const client = await MongoClient.connect(uri);
     const coll = client.db(db_name).collection(article_collection);
@@ -130,9 +138,39 @@ async function publishArticleObj(articleObj) {
     return;
 }
 
+
 async function retrieveLiveObjects() {
+    /**
+     * Retrieves all objects currently within the live collection.
+     * 
+     * @param { } 
+     * @returns { } - An array of JSON objects.
+     */
+
+    let result = [];
+    const client = await MongoClient.connect(uri);
+    const coll = client.db(db_name).collection(live_collection);
+
+    await client.close();
+    return result;
+}
+
+
+async function resetLiveObjects() {
+    /**
+     * Deletes all objects currently within the live collection.
+     * 
+     * @param { }
+     * @returns { }
+     */
+
+    const client = await MongoClient.connect(uri);
+    const coll = client.db(db_name).collection(live_collection);
+
+    await client.close();
     return;
 }
+
 
 module.exports = { 
     retrieveFeaturedDocuments,

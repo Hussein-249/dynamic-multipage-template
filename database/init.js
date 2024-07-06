@@ -1,5 +1,5 @@
 /**
- * This file contaisn code that will load the database collection with sample data found in the sample_data folder.
+ * This file contains code that will load the database collection with sample data found in the sample_data folder.
  * In principle, the init check is performed on app start. If the data has already been loaded, then init_db() will be skipped.
  * Check is performed by setting a init_flag value.
  */
@@ -29,6 +29,7 @@ function check_init() {
         throw err;
     }
 }
+
 
 function init_db() {
     /**
