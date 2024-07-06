@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { searchArticles } = require('../database/query_handler');
+const { dualConsoleError } = require('../debug/master_log');
 
 
 // callback function must be async due to database query
@@ -13,7 +14,7 @@ router.get('/:searchKeyword', async (req, res) => {
 
         searchResults = await searchArticles(searchParam);
 
-    } catch (error) { console.error(error) }
+    } catch (error) { dualConsoleError(error) }
 
     let numResults = searchResults.length;
 

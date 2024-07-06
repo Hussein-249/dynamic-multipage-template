@@ -4,7 +4,7 @@ const router = express.Router();
 // import modules from code
 const { getParagraphsFromArticle, getArticle } = require('../database/query_handler');
 const { findArticleImage } = require('../image_handle/image_handler');
-
+const { dualConsoleError } = require('../debug/master_log');
 
 
 router.get('/:articleTitle', async (req, res) => {
@@ -30,6 +30,7 @@ router.get('/:articleTitle', async (req, res) => {
                 imagePath = findArticleImage(articleTitle);
                 imageCaption = articleObj.image_caption;
             } catch(err) {
+                dualConsoleError(err);
                 imagePath = '';
                 imageCaption = '';
             }
@@ -42,7 +43,7 @@ router.get('/:articleTitle', async (req, res) => {
 
         res.render('article', { title, paragraphs, numParagraphs, imageCaption, authorString, datePublished, dateModified, imagePath}); 
     } catch (error) {
-        console.log('Cannot find or render article content.\n', error);
+        dualConsoleError(error);
         const errorCode = 500;
         const errorMessage = 'Hmm, we\'ve encountered an error while trying to find that article. Maybe it was renamed or deleted?';
         return res.status(errorCode).render('error', { errorMessage, errorCode})
