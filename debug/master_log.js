@@ -26,12 +26,6 @@ function selectStandardLogStream() {
 }
 
 
-function clearAllLogs() {
-    // For development purposes - clears logs to make easier to find / reproduce / target specific errors
-    return;
-}
-
-
 morgan.token('customErrorLog', (req, res) => {
 	if (res.statusCode >= 400) {
 		return `IP: ${req.ip} - Method: ${req.method} - URL: ${req.originalUrl} - Status: ${res.statusCode}`;

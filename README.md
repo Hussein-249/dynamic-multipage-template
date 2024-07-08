@@ -8,7 +8,7 @@
 
 [README auf Deutsch <i>hier</i> verfügbar! :)](https://github.com/Hussein-249/dynamic-multipage-template/blob/main/README-DE.md)
 
-> Gutenberg is an Express.js project aiming to provide a simple yet comprehensive solution for managing blogs and small news sites, aimed for both developers and producers (authors / orgs) alike.
+> Gutenberg is an Express.js project aiming to provide a simple yet comprehensive solution for creating and managing a blog or a small news site, catered towards both developers and producers (authors & organizations) alike.
 
 # Purpose
 
@@ -27,7 +27,7 @@ The server-side code is written in JavaScript using Node, and requires the follo
 - ```morgan``` for logging
 - ```Jest``` and ```Selenium``` (see [Tests](#tests))
 
-MongoDB is used to serve article / blog text. Media retrieval is achieved through local storage and a custom store and search implementation.
+MongoDB is used to serve article / blog text. Media retrieval is achieved through local storage and a custom store-and-retrieve implementation.
 
 ## Runtime Environment
 
@@ -46,14 +46,15 @@ npm install
 
 ## Debugging
 
-In addition to a standard Morgan logger to track HTTP requests, I have implemented a custom logging implementation to separately track runtime errors and HTTP error responses. This allows the app to track non-critical exceptions (runtime errors that shouldn't happen, but in the event they do occur, the app handles them 'gracefully' and continues to operate) as well as report bad responses, which could indicate a broken or faulty link, or a deleted article that is being requested, or a timeout due to heavy server loads.
+In addition to a standard morgan logger to track HTTP requests, I have implemented a custom logging implementation to separately track runtime errors and HTTP error responses. This allows the app to track non-critical exceptions (the app handles runtime errors 'gracefully' and continues to operate) as well as report bad responses, which could indicate a broken or faulty link, or a deleted article that is being requested, or a timeout due to heavy server loads.
 
 # Tests
 
 <div id="tests">
-This project will include both Jest for unit tests and Selenium for end-to-end testing. These packages are included under devDependencies in package.json. Currently, only a basic database unit test has been written.
+This project will include both Jest for unit tests and Selenium for end-to-end testing. These packages are included under devDependencies in package.json.
+I have also added Artillery as a dependency for load testing, with a spike test configured in artillery-config.yaml. In the application's current iteration, it does not appear to handle load testing well. I will look into this.
 
-I've also added Artillery as a dependency for load testing, with a spike test configured in artillery-config.yaml. In the application's current iteration, it does not appear to handle load testing well.
+Additionally, since this application is in effect an API, I will include some Postman tests.
 </div>
 
 # Development Roadmap
@@ -66,12 +67,15 @@ Diagram coming soon.
 - [x] Request and error logs
 
 ## Developing Features
+- [ ] Analytics collection and processing logic.
+- [ ] Post text editor
+- [ ] Post managing
 - [ ] Final Homepage layout
 - [ ] Live news feed logic and layout
 - [ ] Integrated admin interface for post CRUD operations.
+- [ ] Analytics and data viewer (data model must be finalized before this can be started)
 
 ## Planned Features
-- [ ] Integrated post analytics
 - [ ] Colour and font customization
 
 # Documentation

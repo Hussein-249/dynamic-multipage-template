@@ -11,6 +11,7 @@ const uri = process.env.MONGODB_URI;
 const db_name = process.env.MONGODB_DB_NAME;
 const article_collection = process.env.ARTICLE_COLL;
 const live_collection = process.env.LIVE_COLL;
+const analytics_collection = process.env.ANALYTICS_COLL;
 
 
 async function retrieveArticleObj(articleTitle) {
@@ -167,6 +168,14 @@ async function resetLiveObjects() {
     const client = await MongoClient.connect(uri);
     const coll = client.db(db_name).collection(live_collection);
 
+    await client.close();
+    return;
+}
+
+
+async function incrementDataBaseError(errorNumber) {
+    const client = await MongoClient.connect(uri);
+    const coll = client.db(db_name).collection(analytics_collection);
     await client.close();
     return;
 }

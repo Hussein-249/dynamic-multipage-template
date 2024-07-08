@@ -1,6 +1,7 @@
 /**
  * This contains a selection of functions for manually testing critical functions and modules of the code.
- * Most of the code in this application is not complex, so these function are usuful for targeting just 
+ * Most of the code in this application is not complex, so these function are usuful for targeting a specific section of code.
+ * However, the tests included under tests should cover the major aspects.
  * May be integrated into unit testing and end-to-end testing.
  */
 
@@ -36,6 +37,7 @@ async function printArticleParagraphs(articleName) {
     }
 }
 
+
 async function printArticlesContainingTag(tag) {
     try {
         const articles = await searchArticles(tag);
@@ -45,12 +47,3 @@ async function printArticlesContainingTag(tag) {
         console.error(error);
     }
 }
-
-
-// printRandomFeaturedArticle();
-
-// printSelectedArticle('Italy wins FIVB World Cup 2022');
-
-// printArticleParagraphs('Italy wins FIVB World Cup 2022');
-
-printArticlesContainingTag('Poland');

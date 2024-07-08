@@ -15,11 +15,9 @@
 
 // alphabetical order for consistency   
 const express = require('express');
-const rlimit = require('express-rate-limit');
-
 const helmet = require('helmet');
-const http = require('http');
 const path = require('path');
+const rlimit = require('express-rate-limit');
 
 // imports or modules from project-code
 const imageHandler = require('./image_handle/image_handler')
@@ -35,7 +33,7 @@ const searchRoute = require('./routes/search');
 const documentationRoute = require('./routes/documentation');
 
 const PORT = process.env.PORT || 3000;
-init_db();
+init_db(); // set up database if it does not exists / has not been configured
 const app = express();
 
 // Might need to disable this for load testing
@@ -59,6 +57,7 @@ app.use(rateLimit);
 app.use(logger);
 app.use(errorLogger);
 
+// use routes
 app.use('/admin', adminRoute);
 app.use('/article', articleRoute);
 app.use('/live', liveRoute);

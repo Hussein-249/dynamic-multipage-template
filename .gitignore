@@ -4,7 +4,13 @@ bootstrap-5.3.3
 favicon.ico
 log.txt
 errorlog.txt
+
+# environment variables
 .env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
 
 # files generated during testing
 .cpuprofile
