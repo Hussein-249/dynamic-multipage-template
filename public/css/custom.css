@@ -1,3 +1,7 @@
+:root{
+    --theme-1: #0f172a;
+}
+
 /* Colours */
 
 .bg-theme-2 {
@@ -5,15 +9,20 @@
 }
 
 .border-theme-1 {
-    border: 1px solid #0f172a;
+    border: 1px solid var(--theme-1);
 }
 
 .border-bottom-theme-1 {
-    border-bottom: 1px solid #0f172a;
+    border-bottom: 1px solid var(--theme-1);
+}
+
+.border-start-theme-1 {
+    border-left: 1px solid var(--theme-1);
+
 }
 
 .bg-indigo-500 {
-    background-color: #0f172a;
+    background-color: var(--theme-1);
 }
 
 /* Custom font and text properties */

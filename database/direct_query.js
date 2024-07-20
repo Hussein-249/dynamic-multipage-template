@@ -1,7 +1,8 @@
 /**
  * This module directly queries the MongoDB database and directly selects data from JSON documents.
- * Although some functions only manipulate documents and do not query the database, they are included in this module
- * for simplicty as they directly interact with the objects and will be wrapped by the same query_handler module.
+ * Although some functions present in this file only manipulate documents and do not query the database, 
+ * they are still included in this module for simplicity.
+ * This is because they interact with objects and will be wrapped by the same query_handler module as the functions that query the database.
  */
 
 require('dotenv').config();
@@ -12,9 +13,17 @@ const db_name = process.env.MONGODB_DB_NAME;
 const article_collection = process.env.ARTICLE_COLL;
 const live_collection = process.env.LIVE_COLL;
 const analytics_collection = process.env.ANALYTICS_COLL;
+const page_collection = process.env.PAGE_COLL;
 
 
 async function retrieveArticleObj(articleTitle) {
+    /**
+     * Retrieves a JSON article from the database matching the specified articleTitle.
+     * 
+     * @param { string } articleTitle - the title of the target article, matching the article_title field in the JSON / BSON document.
+     * @returns { JSON } tresult - a JSON object from the databse whose 'article_title' field matches the specified articleTitle parameter.
+     */
+
     const filter = {
         'article_title': articleTitle
     };
@@ -22,6 +31,7 @@ async function retrieveArticleObj(articleTitle) {
     // Replace with valid authentication credentials in env
     // if no auth is set then you can remove the userinfo section, but this is evidently a major security risk
     // no need for NewUrlParser or UnifiedTopology options due to deprecation
+    // this applies to await MongoClient.connect() in all other functions.
     const client = await MongoClient.connect(uri);
 
     // always async wait to prevent server close error
@@ -55,11 +65,22 @@ async function retrieveFeaturedDocuments() {
 };
 
 
-async function retrieveParagraphs(articleObj) {
+function retrieveParagraphs(articleObj) {
     let result = [];
 
     for (const key in articleObj) {
         if (key.startsWith('p')) { result.push(articleObj[key]); }
+    }
+
+    return result;
+};
+
+
+function retrieveHeaders(articleObj) {
+    let result = [];
+
+    for (const key in articleObj) {
+        if (key.startsWith('h')) { result.push(articleObj[key]); }
     }
 
     return result;
@@ -92,7 +113,6 @@ async function retrieveMostReadArticles() {
 async function retrieveSearchData(searchTag) {
      /**
      * Retrieves all published articles in the database (ranked dayviewcount) as a list of JSON objects.
-     * Directly queries the database.
      * 
      * @param { } searchTag - string input from search form
      * @returns { array } tagArray - list of JSON objects (published articles)
@@ -145,7 +165,7 @@ async function retrieveLiveObjects() {
      * Retrieves all objects currently within the live collection.
      * 
      * @param { } 
-     * @returns { } - An array of JSON objects.
+     * @returns { }
      */
 
     let result = [];
@@ -181,11 +201,42 @@ async function incrementDataBaseError(errorNumber) {
 }
 
 
+// The functions after this point deal with the 'organizational' pages, such as the about and privacy policy pages.
+// We refer to the objects targeted here as pages rather than articles to distinguish between the two.
+
+
+async function retrieveSpecifiedPage(pageTitle) {
+    /**
+     * Retrieves a JSON article from the database matching the specified pageTitle.
+     * 
+     * @param { string } pageTitle - the title of the target page
+     * @returns { JSON } matchingPage - a JSON object that that matches the specified pageTitle to the 'title' field in the JSON / BSON document.
+     */
+
+    const filter = {
+        'title': pageTitle
+    };
+
+    try {
+        const client = await MongoClient.connect(uri);
+        const coll = client.db(db_name).collection(page_collection);
+        const matchingPage = await coll.findOne(filter);
+        await client.close();
+        return matchingPage;
+
+    } catch (err) {
+        throw err;
+    }
+}
+
+
 module.exports = { 
     retrieveFeaturedDocuments,
     retrieveArticleObj,
     retrieveParagraphs,
     retrieveMostReadArticles,
     retrieveSearchData,
-    publishArticleObj
+    publishArticleObj,
+    retrieveSpecifiedPage,
+    retrieveHeaders
 }

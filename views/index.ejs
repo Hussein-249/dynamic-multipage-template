@@ -14,23 +14,23 @@
 </head>
 <body class="font-quicksand-400">
     <%- include('partials/header') %>
-    <div class="d-flex flex-column flex-md-row justify-content-center w-100">
-      <a href="<%= url.format({ pathname: '/article/' + firstArticle.article_title }) %>" class="text-decoration-none text-dark col-md-4 card m-4 p-2 border-0">
+    <div id="featured" class="d-flex flex-column flex-md-row justify-content-center w-100">
+      <a href="<%= url.format({ pathname: '/article/' + firstArticle.article_title }) %>" class="text-decoration-none text-dark col-md-4 card mx-3 my-2 p-2 border-0">
         <div class="bg-image ">
           <img src="/img/placeholder/wef.jpg" class="img-fluid rounded overflow-hidden"/>
         </div>
-        <div class="card-body px-0 border-bottom-theme-1">
+        <div class="card-body px-1 pt-2 pb-1 border-bottom-theme-1">
           <h4 class="card-title text-center"><%= firstArticle.article_title.replaceAll('-', ' ') %></h4>
-          <p><%= firstArticle.article_subtitle %></p>
+          <p class="m-0"><%= firstArticle.article_subtitle %></p>
         </div>
       </a>
-      <a href="<%= url.format({ pathname: '/article/' + secondArticle.article_title }) %>" class="text-decoration-none text-dark col-md-4 card m-4 p-2 border-0">
+      <a href="<%= url.format({ pathname: '/article/' + secondArticle.article_title }) %>" class="text-decoration-none text-dark col-md-4 card mx-3 my-2 p-2 border-0">
         <div class="bg-image ">
           <img src="/img/placeholder-ambulance-img.jpg" class="img-fluid rounded text-center"/>
         </div>
-        <div class="card-body px-0 border-bottom-theme-1">
+        <div class="card-body px-1 pt-2 pb-1 border-bottom-theme-1">
           <h4 class="card-title text-center"> <%= secondArticle.article_title.replaceAll('-', ' ') %></h4>
-          <p><%= secondArticle.article_subtitle %></p>
+          <p class="m-0"><%= secondArticle.article_subtitle %></p>
         </div>
       </a>
     </div>
@@ -47,7 +47,14 @@
       <div class="col"></div>
     </div>
     <!-- Include live -->
-    <!-- Include  -->
+    <div id="opinion-business-categories" class="d-flex flex-column flex-md-row justify-content-center w-100">
+      <div id="business" class="col-md-5 me-2">
+        <h2 class="text-center pb-2 border-bottom-theme-1">Business</h2>
+      </div>
+      <div id="opinion" class="col-md-5 ms-2">
+        <h2 class="text-center pb-2 border-bottom-theme-1">Opinion</h2>
+      </div>
+    </div>
     <%- include('partials/footer') %>
 </body>
 </html>

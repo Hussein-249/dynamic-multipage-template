@@ -4,6 +4,7 @@ bootstrap-5.3.3
 favicon.ico
 log.txt
 errorlog.txt
+temp
 
 # environment variables
 .env

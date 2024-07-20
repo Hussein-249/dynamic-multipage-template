@@ -2,7 +2,16 @@
  * This module largely serves as a controller for the direct_query module.
  */
 
-const { retrieveFeaturedDocuments, retrieveArticleObj, retrieveParagraphs, retrieveSearchData, publishArticleObj } = require('./direct_query');
+const { 
+    retrieveFeaturedDocuments,
+    retrieveArticleObj,
+    retrieveParagraphs,
+    retrieveSearchData,
+    publishArticleObj,
+    retrieveSpecifiedPage,
+    retrieveHeaders 
+} = require('./direct_query');
+
 const { dualConsoleError } = require('../debug/master_log');
 
 
@@ -71,6 +80,7 @@ async function searchArticles(searchTag) {
     
 }
 
+
 async function publishArticle(articleObj) {
     try {
         publishArticleObj(articleObj);
@@ -80,4 +90,48 @@ async function publishArticle(articleObj) {
     return;
 }
 
-module.exports = { getFeaturedArticles, getParagraphsFromArticle, getArticle, searchArticles, publishArticle };
+
+async function getPage(pageTitle) {
+    try {
+        let page = retrieveSpecifiedPage(pageTitle);
+        return page;
+
+    } catch (error) {
+        dualConsoleError('Error publishing post:', error);
+    }
+}
+
+
+async function getParagraphsFromPage(pageObj) {
+    
+    let paragraphs = [];
+    try {
+        paragraphs = await retrieveParagraphs(pageObj);
+    } catch (error) {
+        dualConsoleError(error);
+    }
+    return paragraphs;
+}
+
+
+function getHeadersFromPage(pageObj) {
+    let paragraphs = [];
+    try {
+        paragraphs = retrieveHeaders(pageObj);
+    } catch (error) {
+        dualConsoleError(error);
+    }
+    return paragraphs;
+}
+
+
+module.exports = { 
+    getFeaturedArticles, 
+    getParagraphsFromArticle, 
+    getArticle, 
+    searchArticles,
+    publishArticle, 
+    getPage,
+    getParagraphsFromPage,
+    getHeadersFromPage 
+};

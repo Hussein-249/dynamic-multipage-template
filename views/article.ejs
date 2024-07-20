@@ -17,15 +17,15 @@
     <div class="d-flex">
         <div class="col-md-2"></div>
         <div class="col-md-8 p-sm-5 p-md-3 p-lg-2 pt-2 mb-4 lh-lg border-bottom border-secondary border-2">
-            <div class="text-center fs-2 m-4 mb-2 pb-3 border-bottom border-secondary border-2 font-quicksand-500" id="article-title">
+            <div class="text-center fs-2 m-4 mb-2 pb-3 border-bottom border-secondary border-` font-quicksand-500" id="article-title">
                 <h1 class="mb-2">
                     <%= title %>
                 </h1>
             </div>
-            <h2 class="text-secondary fs-6 mx-4 my-0 pb-2 border-bottom border-secondary border-2 row" id="article-details">
-                <div class="col">By : <%= authorString %></div>
-                <div class="col">Published :  <%= datePublished %></div>
-                <div class="col">Updated : <%= dateModified %></div>
+            <h2 class="text-secondary fs-6 mx-4 my-0 pb-2 border-bottom border-secondary border-1 row" id="article-details">
+                <div class="col text-center">By : <%= authorString %></div>
+                <div class="col text-center">Published :  <%= datePublished %></div>
+                <div class="col text-center">Updated : <%= dateModified %></div>
             </h2>
             <div id="image-hold-div" class="m-4">
                 <img src="<%= imagePath %>" class="img-fluid rounded overflow-hidden article-img m-auto d-block"/>

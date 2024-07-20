@@ -4,10 +4,6 @@
  * Description: A basic Express server to serve EJS template with content dynamically added based on the appropriate information stored in the database.
  * Server listens on port 3000 unless specified in environment variables.
  * 
- * EXECUTION:
- * npm start
- * OR
- * node server.js
 */
 
 // prevents silent errors
@@ -27,6 +23,7 @@ const { getFeaturedArticles } = require('./database/query_handler');
 
 // importing routes
 const adminRoute = require('./routes/admin');
+const aboutRoutes = require('./routes/about');
 const articleRoute = require('./routes/article');
 const liveRoute = require('./routes/live');
 const searchRoute = require('./routes/search');
@@ -59,6 +56,7 @@ app.use(errorLogger);
 
 // use routes
 app.use('/admin', adminRoute);
+app.use('/about', aboutRoutes);
 app.use('/article', articleRoute);
 app.use('/live', liveRoute);
 app.use('/search', searchRoute);
@@ -127,6 +125,7 @@ app.listen(PORT, error => {
         console.log('\x1b[0m','Homepage:', '\x1b[35m', `http://localhost:${PORT}/`, '\x1b[0m');
         console.log('\x1b[0m', 'Admin link:', '\x1b[35m', `http://localhost:${PORT}/admin`, '\x1b[0m');
         console.log('\x1b[0m','Live link:', '\x1b[35m', `http://localhost:${PORT}/live`, '\x1b[0m');
+        console.log('\x1b[0m','Link to some generic about and organizational page: \n', '\x1b[35m', `http://localhost:${PORT}/about`, '\x1b[0m');
         console.log('\x1b[0m','Sample search result:', '\x1b[35m', `http://localhost:${PORT}/search/Poland`, '\x1b[0m');
         console.log('\x1b[0m','Sample article link:', '\x1b[35m', `http://localhost:${PORT}/article/Italy-wins-FIVB-World-Cup-2022`, '\x1b[0m');
         console.log('\x1b[0m','Alternate article link:', '\x1b[35m', `http://localhost:${PORT}/article/This-year\'s-WEF-meeting-draws-to-a-close`, '\x1b[0m');
