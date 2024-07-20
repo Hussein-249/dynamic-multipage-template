@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+    <title><%= pageTitle %></title>
+</head>
+<body class="font-quicksand-400">
+    <%- include('partials/header') %>
+    <div class="d-flex flex-fill fs-4">
+        <div class="col"></div>
+        <div class="col-11 col-md-7 mb-2">
+            <% for (var i = 0; i < numParagraphs; i++) { %>
+                <h1 class="my-3 fs-1"> <%= headers[i] %></h1>
+                <div class="my-3 fs-5">
+                    <%= paragraphs[i] %> 
+                </div>
+            <% } %>
+        </div>
+        <div class="col"></div>
+
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

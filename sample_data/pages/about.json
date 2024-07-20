@@ -1,0 +1,10 @@
+{
+    "_id": 1,
+    "title": "About",
+    "h1": "About Gutenberg",
+    "p1": "Gutenberg is an open-source blogging and / or news application for indpendent bloggers and news sites. It provides a self-hosted alternative to platforms like Medium, SubStack, and WordPress.",
+    "h2": "Why Gutenberg?",
+    "p2": "Because Gutenberg is open source, smaller teams can exercise more control over how your website looks and what pages you are displaying. The main point of Gutenberg is that its core logic is simple and modular, easy for new developers to customize and easy for end-users to experience.",
+    "h3": "And what is this 'About' page?",
+    "p3": "You can customize this 'About Page by editing your JSON document in the ./public/pages/about.json file and loading it into the database."
+}
