@@ -7,13 +7,13 @@
 
 require('dotenv').config();
 const { MongoClient } = require('mongodb');
-
-const uri = process.env.MONGODB_URI;
-const db_name = process.env.MONGODB_DB_NAME;
-const article_collection = process.env.ARTICLE_COLL;
-const live_collection = process.env.LIVE_COLL;
-const analytics_collection = process.env.ANALYTICS_COLL;
-const page_collection = process.env.PAGE_COLL;
+const { uri,
+        db_name,
+        article_collection,
+        live_collection,
+        page_collection,
+        analytics_collection
+    } = require('./DBVAR');
 
 
 async function retrieveArticleObj(articleTitle) {
@@ -21,7 +21,7 @@ async function retrieveArticleObj(articleTitle) {
      * Retrieves a JSON article from the database matching the specified articleTitle.
      * 
      * @param { string } articleTitle - the title of the target article, matching the article_title field in the JSON / BSON document.
-     * @returns { JSON } tresult - a JSON object from the databse whose 'article_title' field matches the specified articleTitle parameter.
+     * @returns { Object } tresult - a JSON object from the databse whose 'article_title' field matches the specified articleTitle parameter.
      */
 
     const filter = {
@@ -92,7 +92,8 @@ async function retrieveMostReadArticles() {
      * Retrieves the top 5 most read (published) articles in the database (ranked dayviewcount) as a list of JSON objects.
      * Directly queries the database.
      * 
-     * @param { } articleName
+     * This function takes no parameters.
+     * 
      * @returns { array } topArticleArray - list of JSON objects
      */
 
@@ -145,7 +146,7 @@ async function publishArticleObj(articleObj) {
     /**
      * Pushes an article object to the articles collection in MongoDB.
      * 
-     * @param { } searchTag - JSON object representing the article and its metadata
+     * @param { } articleObj - JSON object representing the article and its metadata
      * @returns { }
      */
 
@@ -164,7 +165,6 @@ async function retrieveLiveObjects() {
     /**
      * Retrieves all objects currently within the live collection.
      * 
-     * @param { } 
      * @returns { }
      */
 
@@ -181,7 +181,6 @@ async function resetLiveObjects() {
     /**
      * Deletes all objects currently within the live collection.
      * 
-     * @param { }
      * @returns { }
      */
 
@@ -210,7 +209,7 @@ async function retrieveSpecifiedPage(pageTitle) {
      * Retrieves a JSON article from the database matching the specified pageTitle.
      * 
      * @param { string } pageTitle - the title of the target page
-     * @returns { JSON } matchingPage - a JSON object that that matches the specified pageTitle to the 'title' field in the JSON / BSON document.
+     * @returns { Object } matchingPage - a JSON object that that matches the specified pageTitle to the 'title' field in the JSON / BSON document.
      */
 
     const filter = {

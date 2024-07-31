@@ -1,5 +1,5 @@
 /*
- * Original Author (OA): Hussein-249
+ * Original Author: Hussein-249
  * 
  * Description: A basic Express server to serve EJS template with content dynamically added based on the appropriate information stored in the database.
  * Server listens on port 3000 unless specified in environment variables.

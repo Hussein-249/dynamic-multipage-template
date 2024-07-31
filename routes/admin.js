@@ -2,12 +2,17 @@ const express = require('express');
 const router = express.Router();
 
 const { publishArticle } = require('../database/query_handler');
+const { getServerUptime,
+        getHostUptime
+ } = require('../analytics/analytics_engine');
 
 
 router.get('/', (req, res) => {
     // use double quotes
-    let adminName = "Admin-username";
-    res.render('admin', { adminName });
+    const adminName = "Admin-username";
+    const serverUptime = getServerUptime();
+    const hostUptime = getHostUptime();
+    res.render('admin', { adminName, serverUptime, hostUptime });
 });
 
 
