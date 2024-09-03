@@ -1,4 +1,4 @@
-# GUTENBERG - A blogging and newspaper solution
+# Publizier - A blogging & newspaper app
 ![](https://img.shields.io/badge/Development-Ongoing-blue)
 ![](https://img.shields.io/github/issues/hussein-249/dynamic-multipage-template)
 ![](https://img.shields.io/badge/Tests-Passing-green)
@@ -6,15 +6,15 @@
 ![](https://img.shields.io/badge/EJS-maroon)
 ![](https://img.shields.io/badge/MongoDB-4db33d)
 
-[README auf Deutsch <i>hier</i> verfügbar! :)](https://github.com/Hussein-249/dynamic-multipage-template/blob/main/README-DE.md)
+[README en Français <i>disponible ici! hier</i>](https://github.com/Hussein-249/dynamic-multipage-template/blob/main/README-DE.md)
 
-> Gutenberg is an Express.js project aiming to provide a simple yet comprehensive solution for creating and managing a blog or a small news site, catered towards both developers and producers (authors & organizations) alike.
+[README auf Deutsch <i>hier verfügbar!</i>](https://github.com/Hussein-249/dynamic-multipage-template/blob/main/README-DE.md)
 
-# Purpose
-
-Web applications and web sites whose main method of content delivery is through a large number of pages require a scalable method of delivery with a responsive and intuitive layout for both producers and consumers. This project aims to serve as a template for building apps while keeping code low, aside from customization choices such as styling or frontend features.
+> Publizier (from the German verb "publizieren") is an Express.js project aiming to provide a simple yet comprehensive solution for creating and managing a blog or a small news site, catered towards both developers and producers (authors & organizations) alike. This project aims to serve as a template for hosting and managing a blog while keeping code low, aside from customization choices such as styling or frontend features.
 
 # Installation & Environment
+
+This app uses Node.js 21 as the runtime environment. Ensure Node is installed before proceeding with the installation.
 
 ## Packages
 
@@ -22,26 +22,29 @@ The server-side code is written in JavaScript using Node, and requires the follo
 
 - ```Bootstrap``` for responsive and accessible styling
 - ```Express``` for middleware
-- ```ejs``` for templating
+- ```ejs``` for page templating
 - ```mongodb``` for interacting with a mongodb database
 - ```morgan``` for logging
 - ```Jest``` and ```Selenium``` (see [Tests](#tests))
 
+All of the above packages have been included in ```package.json```.
+
 MongoDB is used to serve article / blog text. Media retrieval is achieved through local storage and a custom store-and-retrieve implementation.
-
-## Runtime Environment
-
-This app is developed with ```Node.js v21.5.0```. All necessary packages are included in package.json.
 
 ## Installation
 
 - Clone this repository
 ```
-git clone
+git clone https://github.com/Hussein-249/dynamic-multipage-template
 ```
 - Set up the environment by installing the required dependencies included in the ```package.json``` file using
 ```
 npm install
+```
+
+- Start the app using the command
+```
+node server.js
 ```
 
 ## Debugging
@@ -51,10 +54,9 @@ In addition to a standard morgan logger to track HTTP requests, I have implement
 # Tests
 
 <div id="tests">
-This project will include both Jest for unit tests and Selenium for end-to-end testing. These packages are included under devDependencies in package.json.
-I have also added Artillery as a dependency for load testing, with a spike test configured in artillery-config.yaml. In the application's current iteration, it does not appear to handle load testing well. I will look into this.
+This project will include both Jest for unit tests and Selenium for end-to-end testing. These packages are included under devDependencies in ```package.json```.
 
-Additionally, since this application is in effect an API, I will include some Postman tests.
+I have also added Artillery as a dependency for load testing, with a spike test configured in ```artillery-config.yaml```. In the application's current iteration, it does not appear to handle load testing well. I will look into this.
 </div>
 
 # Development Roadmap
@@ -74,9 +76,6 @@ Diagram coming soon.
 - [ ] Live news feed logic and layout
 - [ ] Integrated admin interface for post CRUD operations.
 - [ ] Analytics and data viewer (data model must be finalized before this can be started)
-
-## Planned Features
-- [ ] Colour and font customization
 
 # Documentation
 

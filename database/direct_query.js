@@ -14,6 +14,7 @@ const { uri,
         page_collection,
         analytics_collection
     } = require('./DBVAR');
+const { dualConsoleError } = require('../debug/master_log');
 
 
 async function retrieveArticleObj(articleTitle) {
@@ -209,7 +210,7 @@ async function retrieveSpecifiedPage(pageTitle) {
      * Retrieves a JSON article from the database matching the specified pageTitle.
      * 
      * @param { string } pageTitle - the title of the target page
-     * @returns { Object } matchingPage - a JSON object that that matches the specified pageTitle to the 'title' field in the JSON / BSON document.
+     * @returns { Promise<Object> } matchingPage - a JSON object that that matches the specified pageTitle to the 'title' field in the JSON / BSON document.
      */
 
     const filter = {
@@ -229,6 +230,28 @@ async function retrieveSpecifiedPage(pageTitle) {
 }
 
 
+async function getAllArticles(collection) {
+    /**
+     * Returns a list of all published articles, sorted by date published.
+     * 
+     * @param { } 
+     * @returns { Promise<Array> } 
+     */
+
+    try {
+        const client = await MongoClient.connect(uri);
+        const coll = client.db(db_name).collection(collection);
+        const posts = await coll.find().toArray();
+        await client.close();
+        return posts;
+
+    } catch (err) {
+        dualConsoleError("Error occurred during attempt to fetch all posts.");
+        throw err;
+    }
+}
+
+
 module.exports = { 
     retrieveFeaturedDocuments,
     retrieveArticleObj,
@@ -237,5 +260,6 @@ module.exports = {
     retrieveSearchData,
     publishArticleObj,
     retrieveSpecifiedPage,
-    retrieveHeaders
+    retrieveHeaders,
+    getAllArticles
 }

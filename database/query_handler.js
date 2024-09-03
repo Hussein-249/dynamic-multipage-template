@@ -9,8 +9,14 @@ const {
     retrieveSearchData,
     publishArticleObj,
     retrieveSpecifiedPage,
-    retrieveHeaders 
+    retrieveHeaders,
+    getAllArticles 
 } = require('./direct_query');
+
+const {
+    article_collection,
+    live_collection,
+} = require('./DBVAR');
 
 const { dualConsoleError } = require('../debug/master_log');
 
@@ -125,6 +131,27 @@ function getHeadersFromPage(pageObj) {
 }
 
 
+async function getAllPublishedArticles() {
+    let articles = [];
+    try {
+        articles = getAllArticles(article_collection);
+    } catch (error) {
+        dualConsoleError(error);
+    }
+    return articles;
+}
+
+
+async function getAllDraftArticles() {
+    let articles = [];
+    try {
+        articles = getAllArticles(article_collection);
+    } catch (error) {
+        dualConsoleError(error);
+    }
+    return articles;
+}
+
 module.exports = { 
     getFeaturedArticles, 
     getParagraphsFromArticle, 
@@ -133,5 +160,6 @@ module.exports = {
     publishArticle, 
     getPage,
     getParagraphsFromPage,
-    getHeadersFromPage 
+    getHeadersFromPage,
+    getAllPublishedArticles 
 };

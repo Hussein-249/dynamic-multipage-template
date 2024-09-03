@@ -1,10 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const { publishArticle } = require('../database/query_handler');
+const { publishArticle,
+        getAllPublishedArticles,
+        getAllDraftArticles
+        } = require('../database/query_handler');
+
 const { getServerUptime,
-        getHostUptime
- } = require('../analytics/analytics_engine');
+        getHostUptime,
+        } = require('../analytics/analytics_engine');
 
 
 router.get('/', (req, res) => {
@@ -18,6 +22,13 @@ router.get('/', (req, res) => {
 
 router.get('/create', (req, res) => {
     res.render('admin/create');
+});
+
+
+router.get('/posts', (req, res) => {
+    const articles = getAllPublishedArticles();
+    const drafts = getAllDraftArticles();
+    res.render('admin/posts', { articles });
 });
 
 
