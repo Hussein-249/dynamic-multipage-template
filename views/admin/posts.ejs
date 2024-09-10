@@ -7,7 +7,7 @@
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet">
-    <title>New Post</title>
+    <title>Posts</title>
 </head>
 <body class="flex-grow">
     <div class="container-fluid h-100">
@@ -15,9 +15,16 @@
         <%- include('partials/side-menu') %>
         <div class="col-9 flex-grow-0 mx-auto py-4">
           <h2 class="mb-4 pb-2 text-center border-bottom border-2 w-100 mx-auto">All Posts</h2>
+          <div id="drafts-table-container">
+            <div id="draft-table-header">
+            </div>
+            <div id="draft-table-body">
+            </div>
+          </div>
+          <div id="published-table-container">
+          </div>
         </div>
       </div>
     </div>
-    <!-- <script defer src="/js/create.js"></script> -->
 </body>
 </html>

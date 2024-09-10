@@ -21,7 +21,7 @@ function findArticleImage(articleTitle) {
     const ukey = uniqueGen.nameToUniqueKey(articleTitle);
 
     try {
-        var searchDir = path.join(__dirname, '../public/img', ukey);
+        var searchDir = path.join(__dirname, '../../public/img', ukey);
         var files = fs.readdirSync(searchDir);
         var image = files.find(file => file.toLowerCase().startsWith(articleTitle.toLowerCase()));
 
@@ -29,7 +29,7 @@ function findArticleImage(articleTitle) {
             return path.join('/img', ukey, image);
         } 
     } catch(err) {
-        console.error('Unable to locate directory for the image for this article!');
+        console.error('Unable to locate directory for the image associated with this article!');
         throw(err);
     }
 }

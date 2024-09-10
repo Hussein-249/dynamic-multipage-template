@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { dualConsoleError } = require('../debug/master_log');
 
-const { getPage, getParagraphsFromPage, getHeadersFromPage } = require('../database/query_handler');
+const { getPage, getParagraphsFromPage, getHeadersFromPage } = require('../modules/database/query_handler');
 
 
 router.get(['/', '/help'], async (req, res) => {

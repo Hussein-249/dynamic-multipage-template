@@ -14,7 +14,7 @@ const { uri,
         page_collection,
         analytics_collection
     } = require('./DBVAR');
-const { dualConsoleError } = require('../debug/master_log');
+const { dualConsoleError } = require('../../debug/master_log');
 
 
 async function retrieveArticleObj(articleTitle) {

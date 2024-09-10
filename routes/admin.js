@@ -4,16 +4,16 @@ const router = express.Router();
 const { publishArticle,
         getAllPublishedArticles,
         getAllDraftArticles
-        } = require('../database/query_handler');
+        } = require('../modules/database/query_handler');
 
 const { getServerUptime,
         getHostUptime,
-        } = require('../analytics/analytics_engine');
+        } = require('../modules/analytics/analytics_engine');
 
 
 router.get('/', (req, res) => {
     // use double quotes
-    const adminName = "Admin-username";
+    const adminName = "Stranger";
     const serverUptime = getServerUptime();
     const hostUptime = getHostUptime();
     res.render('admin', { adminName, serverUptime, hostUptime });
@@ -28,7 +28,10 @@ router.get('/create', (req, res) => {
 router.get('/posts', (req, res) => {
     const articles = getAllPublishedArticles();
     const drafts = getAllDraftArticles();
-    res.render('admin/posts', { articles });
+    const numArticles = articles.length;
+    const numDrafts = drafts.length;
+
+    res.render('admin/posts', { articles, drafts, numArticles, numDrafts });
 });
 
 

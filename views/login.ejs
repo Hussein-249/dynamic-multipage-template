@@ -7,18 +7,15 @@
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet">
-    <title><%= adminName %>'s Dashboard</title>
+    <title>Publizier Login</title>
 </head>
-<body class="flex-grow">
-    <main class="container-fluid ">
-      <div class="row">
-        <%- include('admin/partials/side-menu') %>
-        <div class="col flex-grow-1">
-          <h1 class="p-3">Welcome, <%= adminName %>!</h1>
-          <%- include('admin/partials/analytics') %>
-          <%- include('admin/partials/app-health') %>
-        </div>
-      </div>
-    </main>
+<body class="d-flex flex-column justify-content-between mx-0 font-quicksand-400">
+    <%- include('partials/header') %>
+    <div class="d-flex justify-content-center">
+        <form id="login-form">
+            <input type="text" id="username-input" name="tags" placeholder="Username" class="p-1 my-2"/>
+            <input type="text" id="password-input" name="tags" placeholder="Password" class="p-1 my-2"/>
+        </form>
+    </div>
 </body>
 </html>

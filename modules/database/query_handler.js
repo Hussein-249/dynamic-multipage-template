@@ -18,7 +18,7 @@ const {
     live_collection,
 } = require('./DBVAR');
 
-const { dualConsoleError } = require('../debug/master_log');
+const { dualConsoleError } = require('../../debug/master_log');
 
 
 // when debugging queries, try viewing the results here first
@@ -152,6 +152,9 @@ async function getAllDraftArticles() {
     return articles;
 }
 
+
+//TODO Post management
+
 module.exports = { 
     getFeaturedArticles, 
     getParagraphsFromArticle, 
@@ -161,5 +164,6 @@ module.exports = {
     getPage,
     getParagraphsFromPage,
     getHeadersFromPage,
-    getAllPublishedArticles 
+    getAllPublishedArticles,
+    getAllDraftArticles 
 };

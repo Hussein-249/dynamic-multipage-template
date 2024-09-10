@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { searchArticles } = require('../database/query_handler');
+const { searchArticles } = require('../modules/database/query_handler');
 const { dualConsoleError } = require('../debug/master_log');
 
 

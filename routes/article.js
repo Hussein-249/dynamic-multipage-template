@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 // import modules from code
-const { getParagraphsFromArticle, getArticle } = require('../database/query_handler');
-const { findArticleImage } = require('../image_handle/image_handler');
+const { getParagraphsFromArticle, getArticle } = require('../modules/database/query_handler');
+const { findArticleImage } = require('../modules/image_handle/image_handler');
 const { dualConsoleError } = require('../debug/master_log');
 
 

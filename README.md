@@ -3,18 +3,13 @@
 ![](https://img.shields.io/github/issues/hussein-249/dynamic-multipage-template)
 ![](https://img.shields.io/badge/Tests-Passing-green)
 ![](https://img.shields.io/badge/JavaScript-fde427)
-![](https://img.shields.io/badge/EJS-maroon)
 ![](https://img.shields.io/badge/MongoDB-4db33d)
 
-[README en Français <i>disponible ici! hier</i>](https://github.com/Hussein-249/dynamic-multipage-template/blob/main/README-DE.md)
-
-[README auf Deutsch <i>hier verfügbar!</i>](https://github.com/Hussein-249/dynamic-multipage-template/blob/main/README-DE.md)
-
-> Publizier (from the German verb "publizieren") is an Express.js project aiming to provide a simple yet comprehensive solution for creating and managing a blog or a small news site, catered towards both developers and producers (authors & organizations) alike. This project aims to serve as a template for hosting and managing a blog while keeping code low, aside from customization choices such as styling or frontend features.
+> Publizier (from the German verb "publizieren") is an Express.js project aiming to provide a simple yet comprehensive solution for creating and managing a blog or a small news site, catered towards both developers and producers (authors & organizations) alike. This project aims to serve as a template for hosting and managing a blog while keeping code low.
 
 # Installation & Environment
 
-This app uses Node.js 21 as the runtime environment. Ensure Node is installed before proceeding with the installation.
+This app uses ```Node.js 21.5``` as the runtime environment. Ensure Node is installed before proceeding with the installation.
 
 ## Packages
 
@@ -29,7 +24,7 @@ The server-side code is written in JavaScript using Node, and requires the follo
 
 All of the above packages have been included in ```package.json```.
 
-MongoDB is used to serve article / blog text. Media retrieval is achieved through local storage and a custom store-and-retrieve implementation.
+MongoDB is used to serve text and metadata. Media retrieval is achieved through local storage and a custom store-and-retrieve implementation.
 
 ## Installation
 
@@ -49,7 +44,7 @@ node server.js
 
 ## Debugging
 
-In addition to a standard morgan logger to track HTTP requests, I have implemented a custom logging implementation to separately track runtime errors and HTTP error responses. This allows the app to track non-critical exceptions (the app handles runtime errors 'gracefully' and continues to operate) as well as report bad responses, which could indicate a broken or faulty link, or a deleted article that is being requested, or a timeout due to heavy server loads.
+In addition to a standard morgan logger to track HTTP requests, I have implemented a custom logging implementation to separately track runtime errors and HTTP error responses. This allows the app to track non-critical exceptions as well as report bad responses, which could indicate a broken or faulty link, or a deleted article that is being requested, or a timeout.
 
 # Tests
 

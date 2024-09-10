@@ -16,10 +16,10 @@ const path = require('path');
 const rlimit = require('express-rate-limit');
 
 // imports or modules from project-code
-const imageHandler = require('./image_handle/image_handler')
+const imageHandler = require('./modules/image_handle/image_handler')
 const { logger, errorLogger, dualConsoleError } = require('./debug/master_log');
-const { init_db } = require('./database/init');
-const { getFeaturedArticles } = require('./database/query_handler');
+const { init_db } = require('./modules/database/init');
+const { getFeaturedArticles } = require('./modules/database/query_handler');
 
 // importing routes
 const adminRoute = require('./routes/admin');
