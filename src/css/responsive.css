@@ -1,0 +1,23 @@
+
+/* Responsive screen sizing */
+
+@media (min-width: 576px) {
+    body {
+        margin: 0;
+        /* margin-left: 50px; */
+        /* margin-right: 50px; */
+    }
+
+    /* by class */
+
+    .article-title {
+        font-size: var(--fs-lg);
+    }
+
+    
+
+    .expandable-menu a {
+        font-size: var(--fs-lg);
+    }
+
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head') %>
+<body >
+    <%- include('partials/header') %>
+    <div class="d-flex flex-fill">
+        <div class="col"></div>
+        <div class="col-11 col-md-7 mb-2">
+            <% for (var i = 0; i < numParagraphs; i++) { %>
+                <h1 class="my-3"> <%= headers[i] %></h1>
+                <div class="my-3">
+                    <%= paragraphs[i] %> 
+                </div>
+            <% } %>
+        </div>
+        <div class="col"></div>
+
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

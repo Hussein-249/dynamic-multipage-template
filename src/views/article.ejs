@@ -1,42 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A Publizier Article.">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="/css/custom.css" rel="stylesheet">
+    <%- include('partials/head') %>
     <title><%= title %></title>
 </head>
-<body class="font-quicksand-400">
+<body>
     <%- include('partials/header') %>
     <div class="col position-fixed ms-4 mt-5 border border-dark d-none d-md-block" style="background: white; border-radius: 100px;">
     </div>
     <div class="d-flex">
         <div class="col-md-2"></div>
-        <div class="col-md-8 p-sm-5 p-md-3 p-lg-2 pt-2 mb-4 lh-lg border-bottom border-secondary border-2">
-            <div class="text-center fs-2 m-4 mb-2 pb-3 border-bottom border-secondary font-quicksand-500" id="article-title">
-                <h1 class="mb-2">
-                    <%= title %>
-                </h1>
-            </div>
-            <h2 class="text-secondary fs-6 mx-4 my-0 pb-2 border-bottom border-secondary border-1 row" id="article-details">
+        <article class="col-md-8 p-sm-5 p-lg-5 pt-2 mb-4 lh-lg border-bottom border-secondary border-2">
+            <h1 class=" text-center m-4 mb-2 pb-3 border-bottom border-secondary article-title">
+                <%= title %>
+            </h1>
+            <h2 class="mx-4 my-0 pb-2 border-bottom border-secondary border-1 row article-details">
                 <div class="col text-center">By : <%= authorString %></div>
                 <div class="col text-center">Published :  <%= datePublished %></div>
                 <div class="col text-center">Updated : <%= dateModified %></div>
             </h2>
-            <div id="image-hold-div" class="m-4">
+            <figure id="image-hold-div" class="m-4">
                 <img src="<%= imagePath %>" class="img-fluid rounded overflow-hidden article-img m-auto d-block"/>
-                <h2 class="fs-6 p-3 m-auto text-muted d-block text-center border-bottom border-secondary border-2"><i><%= imageCaption %></i></h2>
-            </div>
+                <figcaption class="p-3 m-auto text-muted d-block text-center border-bottom border-secondary border-2"><%= imageCaption %></figcaption>
+            </figure>
             <% for (var i = 0; i < numParagraphs; i++) { %>
-                <div class="fs-5 m-4 cs-text-justify">
+                <p class="m-4 cs-text-justify">
                     <%= paragraphs[i] %>
-                </div>
+                </p>
             <% } %>
-        </div>
+            </article>
         <div class="col-md-2"></div>
     </div>
         <div class="d-flex justify-content-center">

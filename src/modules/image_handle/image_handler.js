@@ -21,7 +21,8 @@ function findArticleImage(articleTitle) {
     const ukey = uniqueGen.nameToUniqueKey(articleTitle);
 
     try {
-        var searchDir = path.join(__dirname, '../../public/img', ukey);
+        // var searchDir = path.join(__dirname, '../../../public/img', ukey);
+        const searchDir = path.join(process.cwd(), 'public', 'img', ukey);
         var files = fs.readdirSync(searchDir);
         var image = files.find(file => file.toLowerCase().startsWith(articleTitle.toLowerCase()));
 

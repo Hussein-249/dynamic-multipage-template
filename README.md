@@ -1,9 +1,9 @@
-# Publizier - A blogging & newspaper app
-![](https://img.shields.io/badge/Development-Ongoing-blue)
+# Publizier - A blogging app like Medium and Substack
 ![](https://img.shields.io/github/issues/hussein-249/dynamic-multipage-template)
 ![](https://img.shields.io/badge/Tests-Passing-green)
-![](https://img.shields.io/badge/JavaScript-fde427)
+![](https://img.shields.io/badge/Node.js-417E38)
 ![](https://img.shields.io/badge/MongoDB-4db33d)
+![](https://img.shields.io/badge/Webpack-75AECB)
 
 > Publizier (from the German verb "publizieren") is an Express.js project aiming to provide a simple yet comprehensive solution for creating and managing a blog or a small news site, catered towards both developers and producers (authors & organizations) alike. This project aims to serve as a template for hosting and managing a blog while keeping code low.
 
@@ -20,13 +20,16 @@ The server-side code is written in JavaScript using Node, and requires the follo
 - ```ejs``` for page templating
 - ```mongodb``` for interacting with a mongodb database
 - ```morgan``` for logging
+
+The development environment also includes the following npm packages:
+- ```webpack``` and other webpack plugins for minifying and optimizing static files
 - ```Jest``` and ```Selenium``` (see [Tests](#tests))
 
 All of the above packages have been included in ```package.json```.
 
 MongoDB is used to serve text and metadata. Media retrieval is achieved through local storage and a custom store-and-retrieve implementation.
 
-## Installation
+## Installation Steps
 
 - Clone this repository
 ```
@@ -39,8 +42,23 @@ npm install
 
 - Start the app using the command
 ```
-node server.js
+npm start
 ```
+
+- To run the included tests, use
+```
+npm test
+```
+
+## Configuration Files
+
+There a few ```.config``` files at the root directory. This section documents each of these files and their contents.
+
+### jest.config.js
+
+This configuration file is need to point jest towards the directory or directories containing tests using Jest.
+
+### webpack.config.js
 
 ## Debugging
 
@@ -50,8 +68,6 @@ In addition to a standard morgan logger to track HTTP requests, I have implement
 
 <div id="tests">
 This project will include both Jest for unit tests and Selenium for end-to-end testing. These packages are included under devDependencies in ```package.json```.
-
-I have also added Artillery as a dependency for load testing, with a spike test configured in ```artillery-config.yaml```. In the application's current iteration, it does not appear to handle load testing well. I will look into this.
 </div>
 
 # Development Roadmap
@@ -74,4 +90,4 @@ Diagram coming soon.
 
 # Documentation
 
-As this project is aimed both for other developers to build on and for writers or small organizations to use as a template for news sites and blogs, this documentation entails a description of the source code, how to customize the content and layout, and creating new content as an admin.
+To be completed once the first fully-working version of this app is released.

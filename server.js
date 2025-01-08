@@ -1,7 +1,5 @@
 /*
- * Original Author: Hussein-249
- * 
- * Description: A basic Express server to serve EJS template with content dynamically added based on the appropriate information stored in the database.
+ * Description: A basic Express server to serve EJS template with content dynamically added from a MongoDB database.
  * Server listens on port 3000 unless specified in environment variables.
  * 
 */
@@ -9,25 +7,26 @@
 // prevents silent errors
 "use strict";
 
-// alphabetical order for consistency   
+// node modules  
 const express = require('express');
 const helmet = require('helmet');
 const path = require('path');
 const rlimit = require('express-rate-limit');
 
+const productionMode = process.env.NODE_ENV === 'production'
+
 // imports or modules from project-code
-const imageHandler = require('./modules/image_handle/image_handler')
-const { logger, errorLogger, dualConsoleError } = require('./debug/master_log');
-const { init_db } = require('./modules/database/init');
-const { getFeaturedArticles } = require('./modules/database/query_handler');
+const imageHandler = require('./src/modules/image_handle/image_handler');
+const { logger, errorLogger, dualConsoleError } = require('./src/debug/master_log');
+const { init_db } = require('./src/modules/database/init');
+const { getFeaturedArticles } = require('./src/modules/database/query_handler');
 
 // importing routes
-const adminRoute = require('./routes/admin');
-const aboutRoutes = require('./routes/about');
-const articleRoute = require('./routes/article');
-const liveRoute = require('./routes/live');
-const searchRoute = require('./routes/search');
-const documentationRoute = require('./routes/documentation');
+const adminRoute = require('./src/routes/admin');
+const aboutRoutes = require('./src/routes/about');
+const articleRoute = require('./src/routes/article');
+const liveRoute = require('./src/routes/live');
+const searchRoute = require('./src/routes/search');
 
 const PORT = process.env.PORT || 3000;
 init_db(); // set up database if it does not exists / has not been configured
@@ -43,9 +42,12 @@ const rateLimit = rlimit({
 
 app.set('view engine', 'ejs'); // using the express ejs view engine
 
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, './src/views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/css', express.static(path.join(__dirname, 'src/css')));
+app.use('/js', express.static(path.join(__dirname, 'src/js')));
+
 
 app.use(helmet());
 
@@ -60,7 +62,6 @@ app.use('/about', aboutRoutes);
 app.use('/article', articleRoute);
 app.use('/live', liveRoute);
 app.use('/search', searchRoute);
-app.use('/documentation', documentationRoute);
 
 // The bootstrap and fortawesome code below can be removed if your solution uses a CDN to deliver the necessary files.
 
@@ -122,13 +123,12 @@ app.listen(PORT, error => {
     else {
         console.log('\x1b[32m', 'Server has been started.', '\x1b[0m', 'Listening on port:', PORT);
         console.log('\x1b[0m', 'Ctrl + C to terminate server.');
-        console.log('\x1b[0m','Homepage:', '\x1b[35m', `http://localhost:${PORT}/`, '\x1b[0m');
+        console.log('\x1b[0m', 'Homepage:', '\x1b[35m', `http://localhost:${PORT}/`, '\x1b[0m');
         console.log('\x1b[0m', 'Admin link:', '\x1b[35m', `http://localhost:${PORT}/admin`, '\x1b[0m');
-        console.log('\x1b[0m','Live link:', '\x1b[35m', `http://localhost:${PORT}/live`, '\x1b[0m');
-        console.log('\x1b[0m','Link to some generic about and organizational page: \n', '\x1b[35m', `http://localhost:${PORT}/about`, '\x1b[0m');
-        console.log('\x1b[0m','Sample search result:', '\x1b[35m', `http://localhost:${PORT}/search/Poland`, '\x1b[0m');
-        console.log('\x1b[0m','Sample article link:', '\x1b[35m', `http://localhost:${PORT}/article/Italy-wins-FIVB-World-Cup-2022`, '\x1b[0m');
-        console.log('\x1b[0m','Alternate article link:', '\x1b[35m', `http://localhost:${PORT}/article/This-year\'s-WEF-meeting-draws-to-a-close`, '\x1b[0m');
-        console.log('\x1b[0m','Documentation:', '\x1b[35m', `http://localhost:${PORT}/documentation`, '\x1b[0m');
+        console.log('\x1b[0m', 'Live link:', '\x1b[35m', `http://localhost:${PORT}/live`, '\x1b[0m');
+        console.log('\x1b[0m', 'Page link:', '\x1b[35m', `http://localhost:${PORT}/about`, '\x1b[0m');
+        console.log('\x1b[0m', 'Sample search result:', '\x1b[35m', `http://localhost:${PORT}/search/Poland`, '\x1b[0m');
+        console.log('\x1b[0m', 'Sample article link:', '\x1b[35m', `http://localhost:${PORT}/article/Italy-wins-FIVB-World-Cup-2022`, '\x1b[0m');
+        console.log('\x1b[0m', 'Alternate article link:', '\x1b[35m', `http://localhost:${PORT}/article/This-year\'s-WEF-meeting-draws-to-a-close`, '\x1b[0m');
     }
 });

@@ -5,6 +5,8 @@ favicon.ico
 log.txt
 errorlog.txt
 temp
+dist
+app-config.yml
 
 # environment variables
 .env

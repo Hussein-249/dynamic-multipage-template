@@ -1,18 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Include for SEO -->
-    <meta name="News Website" content="Bringing independent news to you">
-    <!-- <meta name="keywords" content="keyword1, keyword2, ..."> -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="/css/custom.css" rel="stylesheet">
-    <title>Publizier</title>
-</head>
-<body class="font-quicksand-400">
+  <%- include('partials/head') %>
+<body>
     <%- include('partials/header') %>
     <div id="featured" class="d-flex flex-column flex-md-row justify-content-center w-100">
       <a href="<%= url.format({ pathname: '/article/' + firstArticle.article_title }) %>" class="text-decoration-none text-dark col-md-4 card mx-3 my-2 p-2 border-0">
@@ -20,7 +9,7 @@
           <img src="/img/placeholder/wef.jpg" class="img-fluid rounded overflow-hidden"/>
         </div>
         <div class="card-body px-1 pt-2 pb-1 border-bottom-theme-1">
-          <h4 class="card-title text-center"><%= firstArticle.article_title.replaceAll('-', ' ') %></h4>
+          <h4 class="card-title py-2"><%= firstArticle.article_title.replaceAll('-', ' ') %></h4>
           <p class="m-0"><%= firstArticle.article_subtitle %></p>
         </div>
       </a>
@@ -29,7 +18,7 @@
           <img src="/img/placeholder-ambulance-img.jpg" class="img-fluid rounded text-center"/>
         </div>
         <div class="card-body px-1 pt-2 pb-1 border-bottom-theme-1">
-          <h4 class="card-title text-center"> <%= secondArticle.article_title.replaceAll('-', ' ') %></h4>
+          <h4 class="card-title py-2"> <%= secondArticle.article_title.replaceAll('-', ' ') %></h4>
           <p class="m-0"><%= secondArticle.article_subtitle %></p>
         </div>
       </a>
@@ -47,14 +36,7 @@
       <div class="col"></div>
     </div>
     <!-- Include live -->
-    <div id="opinion-business-categories" class="d-flex flex-column flex-md-row justify-content-center w-100">
-      <div id="business" class="col-md-5 me-2">
-        <h2 class="text-center pb-2 border-bottom-theme-1">Business</h2>
-      </div>
-      <div id="opinion" class="col-md-5 ms-2">
-        <h2 class="text-center pb-2 border-bottom-theme-1">Opinion</h2>
-      </div>
-    </div>
+    <!-- Maybe include categories like business, opinion, etc -->
     <%- include('partials/footer') %>
 </body>
 </html>

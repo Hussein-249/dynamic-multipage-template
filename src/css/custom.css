@@ -1,0 +1,164 @@
+@import url('responsive.css'); /* styling for larger devices */
+
+:root {
+    /* colours */
+    --theme-main: #0f172a;
+    --theme-secondary: #f1f5f9;
+    --theme-tertiary: #141d33;
+    /* fonts */
+    --fs-sm: 16px;
+    --fs-md: 20px;
+    --fs-lg: 28px;
+}
+
+/* by type */
+
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: "Verdana", "Arial", "Helvetica", sans-serif;
+    font-size: var(--fs-sm);
+    scroll-behavior: smooth;
+    min-height: 100%;
+}
+
+html {
+    background-color: var(--theme-main);
+}
+
+body {
+    background-color: var(--theme-secondary);
+    height: 100%;
+
+}
+
+nav {
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: var(--theme-main);
+    z-index: 1;
+    height: 75px;
+}
+
+/* by ID */
+
+#featured {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* by class */
+
+.article-details {
+    font-size: var(--fs-sm);
+}
+
+.article-title {
+    font-size: var(--fs-md);
+}
+
+.border-theme-1 {
+    border: 1px solid var(--theme-main);
+}
+
+.border-bottom-theme-1 {
+    border-bottom: 1px solid var(--theme-main);
+}
+
+.border-start-theme-1 {
+    border-left: 1px solid var(--theme-main);
+
+}
+
+/* Custom font and text properties */
+
+/* bootstraps's text-justify is deprecated, so this is a custom fix */
+.cs-text-justify {
+    text-align: justify;
+}
+
+/* For client-side interactions */
+
+.pointer:hover {
+    cursor: pointer;
+}
+
+.scale-up:hover {
+    animation: scale-up 0.15s ease-in-out forwards;
+}
+
+/* images */
+
+.article-img {
+    /* max-width: 75%;  */
+    height: auto;
+}
+
+/* arbitrary */
+
+textarea, textarea:focus {
+    border: none;
+    outline: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+.spacer {
+    height: 50px;
+}
+
+.resize-disable {
+    resize: none;
+}
+
+.nav-link {
+    font-size: 24px;
+}
+
+.expandable-menu {
+    height: 0;
+    width: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    background-color: var(--theme-main);
+    overflow-x: hidden;
+    transition: 0.5s;
+    margin-top: 75px;
+    justify-items: center;
+}
+
+.expandable-menu a {
+    padding: 8px 8px 8px 32px;
+    padding: 28px 28px 28px 28px;
+    text-decoration: none;
+    font-size: var(--fs-md);
+    color: var(--theme-secondary);
+    display: block;
+    transition: 0.3s;
+    text-align: center;
+  }
+
+
+.expandable-menu a:hover {
+    background-color:  var(--theme-tertiary);
+}
+
+/* .search-form-width {
+    max-width: 66%;
+} */
+
+/* ANIMATIONS */
+
+@keyframes scale-up {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
